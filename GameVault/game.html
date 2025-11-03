@@ -4,33 +4,32 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>Game — GameVault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="gv-theme-dark">
-<header class="gv-header glass">
-    <div class="gv-left">
-        <a class="gv-logo" href="index.html">GameVault</a>
-        <nav class="gv-nav">
-            <a href="index.html">Home</a>
+<body>
+<div class="app">
+    <header class="site-header">
+        <div class="logo"><a href="index.html">GameVault</a></div>
+        <nav class="nav">
             <a href="catalog.html">Catalog</a>
+            <a href="news.html">News</a>
         </nav>
-    </div>
-    <div class="gv-right">
-        <button id="theme-toggle-game" class="btn-ghost">Тема</button>
-    </div>
-</header>
+        <div class="header-right">
+            <a href="login.html" class="btn small">Sign in</a>
+        </div>
+    </header>
 
-<main class="gv-container">
-    <div id="game-wrap"></div>
-</main>
+    <main class="container">
+        <div id="gameArea"></div>
+    </main>
 
-<footer class="gv-footer">© <span id="year-game"></span> GameVault</footer>
+    <footer class="site-footer">
+        <div>© <span id="year3"></span> GameVault</div>
+    </footer>
+</div>
 
-<script src="js/main.js"></script>
 <script src="js/games.js"></script>
-<script>
-    document.getElementById('year-game').textContent = new Date().getFullYear();
-    window.GV_PAGE = 'game';
-</script>
+<script src="js/main.js"></script>
 </body>
 </html>

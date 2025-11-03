@@ -3,38 +3,34 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Login — GameVault</title>
+    <title>Sign in — GameVault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body class="gv-theme-dark">
-<header class="gv-header glass">
-    <div class="gv-left"><a class="gv-logo" href="index.html">GameVault</a></div>
-    <div class="gv-right"></div>
-</header>
+<body>
+<div class="app">
+    <header class="site-header">
+        <div class="logo"><a href="index.html">GameVault</a></div>
+        <nav class="nav">
+            <a href="catalog.html">Catalog</a>
+        </nav>
+    </header>
 
-<main class="gv-container">
-    <h1>Sign in with Discord — подготовка</h1>
-    <p>Чтобы вход через Discord работал, нужен небольшой сервер (Node/Express). Я могу прислать пример — он займёт 10 минут.</p>
-    <ol>
-        <li>Создать приложение в Discord Developer Portal</li>
-        <li>Указать redirect URI и получить Client ID/Secret</li>
-        <li>Развернуть небольшой сервер (пример я могу дать)</li>
-    </ol>
-    <p>Если хочешь — нажми кнопку ниже, чтобы увидеть пример сервера (Node + Express).</p>
-    <a href="#" id="show-oauth" class="btn">Показать пример сервера</a>
+    <main class="container auth">
+        <h1>Sign in</h1>
+        <form id="loginForm" class="auth-form">
+            <label>Email<input type="email" id="email" required></label>
+            <label>Password<input type="password" id="password" required></label>
+            <button class="btn" type="submit">Sign in</button>
+        </form>
+        <p class="muted">Demo only — no backend. Data saved in localStorage.</p>
+    </main>
 
-    <pre id="oauth-snippet" style="display:none;background:#0b0d10;padding:12px;color:#cfe7ff;border-radius:8px;margin-top:8px">
-Node server example available on request.
-    </pre>
-</main>
+    <footer class="site-footer">
+        <div>© <span id="year5"></span> GameVault</div>
+    </footer>
+</div>
 
-<footer class="gv-footer glass">© <span id="year-login"></span> GameVault</footer>
-<script>document.getElementById('year-login').textContent=new Date().getFullYear();</script>
 <script src="js/main.js"></script>
-<script>
-    document.getElementById('show-oauth').addEventListener('click', e=>{
-      e.preventDefault(); document.getElementById('oauth-snippet').style.display='block';
-    });
-</script>
 </body>
 </html>

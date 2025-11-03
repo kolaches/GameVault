@@ -1,59 +1,165 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>GameVault — Catalog</title>
+    <title>Catalog — GameVault</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="gv-theme-dark">
-<header class="gv-header glass">
-    <div class="gv-left">
-        <a class="gv-logo" href="index.html">GameVault</a>
-        <nav class="gv-nav">
-            <a href="index.html">Home</a>
-            <a href="catalog.html" class="active">Catalog</a>
-            <a href="about.html">About</a>
-        </nav>
-    </div>
-    <div class="gv-right">
-        <input id="catalog-search" class="gv-search" placeholder="Поиск по каталогу..." />
-        <button id="theme-toggle-2" class="btn-ghost">Тема</button>
-        <a id="sign-link-2" class="btn-ghost" href="login.html">Sign in</a>
-    </div>
-</header>
+<body>
+<div class="app">
+    <header class="site-header">
+        <div class="left">
+            <a class="logo" href="index.html">GameVault</a>
+            <nav class="nav"><a href="catalog.html">Catalog</a><a href="news.html">News</a></nav>
+        </div>
+        <div class="right">
+            <input id="searchCatalog" class="search" placeholder="Search games...">
+            <button id="themeToggle" class="theme-toggle">Theme</button>
+            <a id="discordLogin2" class="btn ghost" href="#">Sign in (Discord)</a>
+        </div>
+    </header>
 
-<main class="gv-container">
-    <h1>Каталог игр</h1>
+    <main class="container">
+        <h1>Game Catalog</h1>
 
-    <div class="filters glass">
-        <select id="filter-genre" class="select"><option value="">Все жанры</option></select>
-        <select id="filter-platform" class="select"><option value="">Все платформы</option></select>
-        <select id="sort-by" class="select">
-            <option value="-rating">По рейтингу</option>
-            <option value="-released">Новые</option>
-            <option value="name">A → Z</option>
-        </select>
-        <button id="reset-filters" class="btn-ghost">Сброс</button>
-    </div>
+        <div class="filters">
+            <select id="filterPlatform" class="select">
+                <option value="">All platforms</option>
+                <option value="PC">PC</option>
+                <option value="PlayStation">PlayStation</option>
+                <option value="Xbox">Xbox</option>
+            </select>
 
-    <div id="catalog-grid" class="cards-grid"></div>
+            <select id="filterGenre" class="select">
+                <option value="">All genres</option>
+            </select>
 
-    <div class="center">
-        <button id="load-more" class="btn">Загрузить ещё</button>
-    </div>
-</main>
+            <select id="sortBy" class="select">
+                <option value="popular">Most popular</option>
+                <option value="rating">Top rated</option>
+                <option value="released">Newest</option>
+            </select>
 
-<footer class="gv-footer glass">
-    © <span id="year-catalog"></span> GameVault
-</footer>
+            <button id="btnLoadMore" class="btn ghost">Load more</button>
+        </div>
 
-<script src="js/main.js"></script>
-<script src="js/games.js"></script>
+        <div id="catalogCards" class="cards"></div>
+
+        <div id="catalogNotice" class="muted" style="margin-top:12px"></div>
+    </main>
+
+    <footer class="site-footer">
+        <div>© <span id="yearCat"></span> GameVault</div>
+    </footer>
+</div>
+
+<script src="js/site.js"></script>
+
 <script>
-    document.getElementById('year-catalog').textContent = new Date().getFullYear();
-    window.GV_PAGE = 'catalog';
+    (function(){
+      const RAWG_KEY = ''; // <-- ВСТАВЬ СЮДА СВОЙ RAWG API KEY (см. инструкцию)
+      const pageSize = 20;
+      let page = 1;
+      let loading = false;
+      let lastQuery = '';
+      const catalogWrap = document.getElementById('catalogCards');
+      const notice = document.getElementById('catalogNotice');
+
+      async function fetchRAWG(params){
+        const base = 'https://api.rawg.io/api/games';
+        const url = new URL(base);
+        url.searchParams.set('page', params.page || 1);
+        url.searchParams.set('page_size', params.page_size || pageSize);
+        if(params.search) url.searchParams.set('search', params.search);
+        if(params.genres) url.searchParams.set('genres', params.genres);
+        if(params.platforms) url.searchParams.set('platforms', params.platforms);
+        if(params.ordering) url.searchParams.set('ordering', params.ordering);
+        if(RAWG_KEY) url.searchParams.set('key', RAWG_KEY);
+        try{
+          const r = await fetch(url.toString());
+          if(!r.ok) throw new Error('RAWG error ' + r.status);
+          return await r.json();
+        }catch(e){
+          console.warn(e);
+          return null;
+        }
+      }
+
+      function mkCard(g){
+        const el = document.createElement('article');
+        el.className = 'card';
+        el.innerHTML = `
+          <img class="thumb lazy" data-src="${g.background_image || 'assets/img/placeholder.jpg'}" alt="${g.name}">
+          <div class="card-body">
+            <h3><a href="game.html?id=${encodeURIComponent(g.slug || g.id)}">${g.name}</a></h3>
+            <div class="meta">${(g.platforms||[]).map(p=>p.platform.name).slice(0,2).join(', ')} · ⭐ ${g.rating}</div>
+            <p class="short">${(g.released||'')} · ${g.genres ? g.genres.map(x=>x.name).slice(0,2).join(', ') : ''}</p>
+            <div class="card-actions">
+              <a class="btn small" href="game.html?id=${encodeURIComponent(g.slug || g.id)}">View</a>
+              <button class="fav-btn" data-id="${g.slug || g.id}">☆</button>
+            </div>
+          </div>
+        `;
+        return el;
+      }
+
+      async function loadPage(reset){
+        if(loading) return;
+        loading = true;
+        notice.textContent = 'Loading...';
+        if(reset){ page = 1; catalogWrap.innerHTML = ''; lastQuery = $('#searchCatalog').value.trim(); }
+        const q = $('#searchCatalog').value.trim();
+        const genre = $('#filterGenre').value;
+        const platform = $('#filterPlatform').value;
+        const sort = $('#sortBy').value;
+
+        const ordering = sort==='rating' ? '-rating' : (sort==='released' ? '-released' : '-added');
+        const data = await fetchRAWG({ page, page_size: pageSize, search: q || undefined, genres: genre || undefined, platforms: platform || undefined, ordering });
+
+        if(!data || !data.results){
+          notice.textContent = 'Unable to fetch games from RAWG (no key or network). Try later.';
+          loading = false;
+          return;
+        }
+
+        data.results.forEach(g => catalogWrap.appendChild(mkCard(g)));
+        if(window.initLazy) window.initLazy();
+        notice.textContent = `Page ${page} — ${data.count ? data.count + ' total' : ''}`;
+        page++;
+        loading = false;
+      }
+
+      // init listeners
+      document.addEventListener('DOMContentLoaded', ()=>{
+        document.getElementById('yearCat').textContent = new Date().getFullYear();
+        $('#searchCatalog').addEventListener('input', ()=> { setTimeout(()=> loadPage(true), 300); });
+        $('#filterPlatform').addEventListener('change', ()=> loadPage(true));
+        $('#filterGenre').addEventListener('change', ()=> loadPage(true));
+        $('#sortBy').addEventListener('change', ()=> loadPage(true));
+        $('#btnLoadMore').addEventListener('click', ()=> loadPage(false));
+
+        // fetch genres for filter
+        (async ()=>{
+          try{
+            const gurl = new URL('https://api.rawg.io/api/genres');
+            if(RAWG_KEY) gurl.searchParams.set('key', RAWG_KEY);
+            const r = await fetch(gurl.toString());
+            if(r.ok){
+              const data = await r.json();
+              const sel = $('#filterGenre');
+              data.results.forEach(g=> {
+                const opt = document.createElement('option'); opt.value = g.slug; opt.textContent = g.name; sel.appendChild(opt);
+              });
+            }
+          }catch(e){ console.warn(e) }
+        })();
+
+        loadPage(true);
+      });
+    })();
 </script>
 </body>
 </html>

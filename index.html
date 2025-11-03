@@ -1,69 +1,133 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>GameVault — Home</title>
-    <meta name="description" content="GameVault — современный игровой хаб" />
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <meta name="description" content="GameVault — legendary games catalog (Steam-like UI).">
 </head>
-<body class="gv-theme-dark">
+<body>
+<div class="app">
+    <header class="site-header">
+        <div class="left">
+            <a class="logo" href="index.html">GameVault</a>
+            <nav class="nav">
+                <a href="catalog.html">Catalog</a>
+                <a href="news.html">News</a>
+                <a href="about.html">About</a>
+                <a href="contacts.html">Contacts</a>
+            </nav>
+        </div>
 
-<header class="gv-header glass">
-    <div class="gv-left">
-        <a class="gv-logo" href="index.html">GameVault</a>
-        <nav class="gv-nav">
-            <a href="index.html" class="active">Home</a>
-            <a href="catalog.html">Catalog</a>
-            <a href="news.html">News</a>
-            <a href="about.html">About</a>
-        </nav>
-    </div>
+        <div class="right">
+            <input id="searchTop" class="search" placeholder="Search games...">
+            <button id="themeToggle" class="theme-toggle">Theme</button>
+            <a id="discordLogin" class="btn ghost" href="#">Sign in (Discord)</a>
+        </div>
+    </header>
 
-    <div class="gv-right">
-        <input id="top-search" class="gv-search" placeholder="Поиск игр — нажми Enter" />
-        <button id="theme-toggle" class="btn-ghost">Тема</button>
-        <a id="sign-link" class="btn-ghost" href="login.html">Sign in</a>
-    </div>
-</header>
-
-<main class="gv-container">
-    <section class="hero glass">
-        <div class="hero-left">
-            <h1>GameVault</h1>
-            <p class="hero-lead">Играй умно. Играй со стилем. Быстрый доступ к описаниям, требованиям и ссылкам на магазины.</p>
-            <div class="hero-ctas">
-                <a class="btn" href="catalog.html">Открыть каталог</a>
-                <a class="btn btn-ghost" href="about.html">О проекте</a>
+    <main class="container">
+        <section class="hero">
+            <div class="hero-left">
+                <h1>Welcome to GameVault</h1>
+                <p class="subtitle">Discover legendary games — Dota 2, CS2, Valorant and more. Clean Steam-like UI with neon vibes.</p>
+                <div class="hero-actions">
+                    <a class="btn" href="catalog.html">Browse Catalog</a>
+                    <a class="btn ghost" href="news.html">Latest News</a>
+                </div>
             </div>
-        </div>
-        <div class="hero-right" id="featured-wrap">
-            <!-- featured injected by js -->
-        </div>
-    </section>
+            <div class="hero-right">
+                <div class="hero-card">
+                    <img src="assets/img/featured.jpg" alt="Featured" class="hero-cover" />
+                    <div class="hero-overlay">
+                        <div class="hero-title">Featured: Dota 2</div>
+                        <div class="hero-meta">PC · MOBA · Free</div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <section class="section">
-        <h2>Trending now</h2>
-        <div id="trending" class="cards-grid"></div>
-    </section>
+        <section>
+            <h2>Trending now</h2>
+            <div id="trending" class="cards"></div>
+        </section>
 
-    <section class="section">
-        <h2>Top rated</h2>
-        <div id="top-rated" class="cards-grid"></div>
-    </section>
-</main>
+        <section style="margin-top:18px">
+            <h2>Top rated</h2>
+            <div id="topRated" class="cards"></div>
+        </section>
+    </main>
 
-<footer class="gv-footer glass">
-    <div>© <span id="year"></span> GameVault — contact: <a href="mailto:djudosoej247hdh@outlook.com">djudosoej247hdh@outlook.com</a> — Discord: <strong>ketume</strong></div>
-</footer>
+    <footer class="site-footer">
+        <div>© <span id="year"></span> GameVault — contact: <a href="mailto:djudosoej247hdh@outlook.com">djudosoej247hdh@outlook.com</a> — Discord: <strong>ketume</strong></div>
+    </footer>
+</div>
 
-<script src="js/main.js"></script>
-<script src="js/games.js"></script>
-<script src="js/auth.js"></script>
+<script src="js/site.js"></script>
 <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-    window.GV_PAGE = 'index';
+    // index-specific initialization
+    (function(){
+      const RAWG_KEY = ''; // <-- вставь сюда свой RAWG API key (см. инструкцию ниже)
+      const base = 'https://api.rawg.io/api';
+
+      function mkCard(g){
+        const el = document.createElement('article');
+        el.className = 'card';
+        el.innerHTML = `
+          <img class="thumb lazy" data-src="${g.background_image || 'assets/img/placeholder.jpg'}" alt="${g.name}">
+          <div class="card-body">
+            <h3><a href="game.html?id=${encodeURIComponent(g.slug || g.id)}">${g.name}</a></h3>
+            <div class="meta">${(g.platforms||[]).map(p=>p.platform.name).slice(0,2).join(', ')} · ⭐ ${g.rating}</div>
+            <p class="short">${(g.released||'')} · ${g.genres ? g.genres.map(x=>x.name).slice(0,2).join(', ') : ''}</p>
+            <div class="card-actions">
+              <a class="btn small" href="game.html?id=${encodeURIComponent(g.slug || g.id)}">View</a>
+              <button class="fav-btn" data-id="${g.slug || g.id}">☆</button>
+            </div>
+          </div>
+        `;
+        return el;
+      }
+
+      async function fetchList(url){
+        try{
+          const q = RAWG_KEY ? `?key=${RAWG_KEY}` : '?key=';
+          const res = await fetch(url + (url.includes('?')? '&':'?') + `key=${RAWG_KEY}`);
+          if(!res.ok) throw new Error('rawg error '+res.status);
+          return await res.json();
+        }catch(e){
+          console.warn('RAWG fetch failed', e);
+          return null;
+        }
+      }
+
+      async function load(){
+        document.getElementById('year').textContent = new Date().getFullYear();
+        // Trending (popular)
+        const trendingData = await fetchList('https://api.rawg.io/api/games?ordering=-added&page_size=6&dates=2020-01-01,2025-12-31&key=' + RAWG_KEY);
+        const topData = await fetchList('https://api.rawg.io/api/games?ordering=-rating&page_size=6&key=' + RAWG_KEY);
+        const trendingWrap = document.getElementById('trending');
+        const topWrap = document.getElementById('topRated');
+
+        if(trendingData && trendingData.results){
+          trendingWrap.innerHTML = '';
+          trendingData.results.forEach(g=> trendingWrap.appendChild(mkCard(g)));
+        } else {
+          trendingWrap.innerHTML = '<div class="muted">Unable to fetch remote list — API key missing or blocked. Use the catalog to see local/demo games.</div>';
+        }
+
+        if(topData && topData.results){
+          topWrap.innerHTML = '';
+          topData.results.forEach(g=> topWrap.appendChild(mkCard(g)));
+        }
+        // init lazy loading from common script
+        if(window.initLazy) window.initLazy();
+      }
+
+      load();
+    })();
 </script>
 </body>
 </html>

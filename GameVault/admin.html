@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Admin — GameVault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="container">
+    <h1>Admin (local)</h1>
+    <div class="admin-note">This is a local admin panel — changes stored in your browser (localStorage). Use for demo.</div>
+    <div id="adminArea">
+        <form id="adminAdd" class="admin-form" style="margin-bottom:12px" onsubmit="return false;">
+            <input id="adm_id" placeholder="id (slug)" class="select" required />
+            <input id="adm_title" placeholder="Title" class="select" required />
+            <input id="adm_cover" placeholder="Cover URL (optional)" class="select" />
+            <input id="adm_genre" placeholder="Genre" class="select" />
+            <button id="admBtn" class="btn" type="submit">Add Game</button>
+        </form>
+        <div class="admin-list"></div>
+    </div>
+    <p style="margin-top:18px"><a href="index.html" class="btn ghost">Back to site</a></p>
+</div>
+<script src="js/games.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
