@@ -1,13 +1,15 @@
-const games = [
+const GAMES = [
   {
     id: 'dota2',
     title: 'Dota 2',
     platform: 'PC · Steam',
     short: '5v5 MOBA — strategy & skill',
     desc: 'Dota 2 is a competitive free-to-play game of team-based action and strategy.',
-    cover: '/assets/img/dota2.jpg',
+    cover: 'assets/img/dota2.jpg',
     steam: 'https://store.steampowered.com/app/570/Dota_2/',
-    requirements: { min: '8 GB RAM, GTX 660 or equivalent' }
+    requirements: { min: '8 GB RAM, GTX 660 or equivalent' },
+    featured: true,
+    top: true
   },
   {
     id: 'cs2',
@@ -15,9 +17,11 @@ const games = [
     platform: 'PC · Steam',
     short: 'Tactical first-person shooter',
     desc: 'Counter-Strike 2 is the next step in the Counter-Strike series.',
-    cover: '/assets/img/cs2.jpg',
+    cover: 'assets/img/cs2.jpg',
     steam: 'https://store.steampowered.com/app/730/CounterStrike_Global_Offensive/',
-    requirements: { min: '8 GB RAM, GTX 970 or equivalent' }
+    requirements: { min: '8 GB RAM, GTX 970 or equivalent' },
+    featured: true,
+    top: true
   },
   {
     id: 'valorant',
@@ -25,10 +29,10 @@ const games = [
     platform: 'PC',
     short: '5v5 character shooter by Riot Games',
     desc: 'Valorant blends precise gunplay with unique agent abilities.',
-    cover: '/assets/img/valorant.jpg',
+    cover: 'assets/img/valorant.jpg',
     steam: '#',
-    requirements: { min: '4 GB RAM, Dual Core' }
+    requirements: { min: '4 GB RAM, Dual Core' },
+    featured: false,
+    top: true
   }
-]
-
-export default games
+];

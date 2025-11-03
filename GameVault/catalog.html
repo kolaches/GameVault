@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Catalog — GameVault</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="app">
+    <header class="site-header">
+        <div class="logo"><a href="index.html">GameVault</a></div>
+        <nav class="nav">
+            <a href="catalog.html">Catalog</a>
+            <a href="news.html">News</a>
+            <a href="about.html">About</a>
+            <a href="contacts.html">Contacts</a>
+        </nav>
+        <div class="header-right">
+            <input id="searchCatalog" class="search" placeholder="Search games..." />
+        </div>
+    </header>
+
+    <main class="container">
+        <h1>Game Catalog</h1>
+
+        <div class="filters">
+            <select id="filterPlatform">
+                <option value="">All platforms</option>
+                <option value="PC">PC</option>
+                <option value="Console">Console</option>
+            </select>
+
+            <select id="sortBy">
+                <option value="popular">Most popular</option>
+                <option value="new">Newest</option>
+            </select>
+        </div>
+
+        <div id="catalogCards" class="cards"></div>
+    </main>
+
+    <footer class="site-footer">
+        <div>© <span id="year2"></span> GameVault</div>
+    </footer>
+</div>
+
+<script src="js/games.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
