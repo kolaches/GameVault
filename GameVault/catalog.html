@@ -4,15 +4,15 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>GameVault — Catalog</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="css/styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="gv-theme-dark">
 <header class="gv-header glass">
     <div class="gv-left">
-        <a class="gv-logo" href="../index.html">GameVault</a>
+        <a class="gv-logo" href="index.html">GameVault</a>
         <nav class="gv-nav">
-            <a href="../index.html">Home</a>
+            <a href="index.html">Home</a>
             <a href="catalog.html" class="active">Catalog</a>
             <a href="about.html">About</a>
         </nav>
@@ -20,7 +20,7 @@
     <div class="gv-right">
         <input id="catalog-search" class="gv-search" placeholder="Поиск по каталогу..." />
         <button id="theme-toggle-2" class="btn-ghost">Тема</button>
-        <a id="discord-link-2" class="btn-ghost" href="login.html">Sign in</a>
+        <a id="sign-link-2" class="btn-ghost" href="login.html">Sign in</a>
     </div>
 </header>
 
@@ -49,8 +49,8 @@
     © <span id="year-catalog"></span> GameVault
 </footer>
 
-<script src="assets/js/main.js"></script>
-<script src="assets/js/games.js"></script>
+<script src="js/main.js"></script>
+<script src="js/games.js"></script>
 <script>
     document.getElementById('year-catalog').textContent = new Date().getFullYear();
     window.GV_PAGE = 'catalog';

@@ -4,26 +4,27 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>GameVault — Home</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
     <meta name="description" content="GameVault — современный игровой хаб" />
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body class="gv-theme-dark">
-<!-- Header (glass) -->
+
 <header class="gv-header glass">
     <div class="gv-left">
         <a class="gv-logo" href="index.html">GameVault</a>
         <nav class="gv-nav">
             <a href="index.html" class="active">Home</a>
-            <a href="GameVault/catalog.html">Catalog</a>
-            <a href="GameVault/news.html">News</a>
-            <a href="GameVault/about.html">About</a>
+            <a href="catalog.html">Catalog</a>
+            <a href="news.html">News</a>
+            <a href="about.html">About</a>
         </nav>
     </div>
+
     <div class="gv-right">
         <input id="top-search" class="gv-search" placeholder="Поиск игр — нажми Enter" />
         <button id="theme-toggle" class="btn-ghost">Тема</button>
-        <a id="discord-link" class="btn-ghost" href="GameVault/login.html">Sign in</a>
+        <a id="sign-link" class="btn-ghost" href="login.html">Sign in</a>
     </div>
 </header>
 
@@ -33,12 +34,12 @@
             <h1>GameVault</h1>
             <p class="hero-lead">Играй умно. Играй со стилем. Быстрый доступ к описаниям, требованиям и ссылкам на магазины.</p>
             <div class="hero-ctas">
-                <a class="btn" href="GameVault/catalog.html">Открыть каталог</a>
-                <a class="btn btn-ghost" href="GameVault/about.html">О проекте</a>
+                <a class="btn" href="catalog.html">Открыть каталог</a>
+                <a class="btn btn-ghost" href="about.html">О проекте</a>
             </div>
         </div>
         <div class="hero-right" id="featured-wrap">
-            <!-- featured card injected by JS -->
+            <!-- featured injected by js -->
         </div>
     </section>
 
@@ -57,12 +58,11 @@
     <div>© <span id="year"></span> GameVault — contact: <a href="mailto:djudosoej247hdh@outlook.com">djudosoej247hdh@outlook.com</a> — Discord: <strong>ketume</strong></div>
 </footer>
 
-<script src="assets/js/main.js"></script>
-<script src="assets/js/games.js"></script>
+<script src="js/main.js"></script>
+<script src="js/games.js"></script>
+<script src="js/auth.js"></script>
 <script>
-    // small init
     document.getElementById('year').textContent = new Date().getFullYear();
-    // tell games.js this is index page
     window.GV_PAGE = 'index';
 </script>
 </body>

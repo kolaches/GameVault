@@ -4,43 +4,33 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>News — GameVault</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
 </head>
-<body>
-<div class="app">
-    <header class="site-header">
-        <div class="logo"><a href="../index.html">GameVault</a></div>
-        <nav class="nav">
+<body class="gv-theme-dark">
+<header class="gv-header glass">
+    <div class="gv-left">
+        <a class="gv-logo" href="index.html">GameVault</a>
+        <nav class="gv-nav">
+            <a href="index.html">Home</a>
             <a href="catalog.html">Catalog</a>
-            <a href="news.html">News</a>
+            <a href="news.html" class="active">News</a>
         </nav>
-        <div class="header-right">
-            <input id="searchNews" class="search" placeholder="Search news..." />
-        </div>
-    </header>
+    </div>
+    <div class="gv-right">
+        <button class="btn-ghost">Тема</button>
+    </div>
+</header>
 
-    <main class="container">
-        <h1>News</h1>
-        <section class="news-list">
-            <article class="news-item">
-                <h3>Big Dota 2 Update</h3>
-                <p>New patch details and pro scene recap.</p>
-                <a class="btn small" href="#">Read</a>
-            </article>
-            <article class="news-item">
-                <h3>CS2 Tournament Announced</h3>
-                <p>International LAN next month — teams announced.</p>
-                <a class="btn small" href="#">Read</a>
-            </article>
-        </section>
-    </main>
+<main class="gv-container">
+    <h1>News</h1>
+    <div class="card news-card glass">
+        <h3>Добро пожаловать в GameVault</h3>
+        <p class="muted">Мы запустили новый интерфейс — тёмный, быстрый и удобный.</p>
+    </div>
+</main>
 
-    <footer class="site-footer">
-        <div>© <span id="year4"></span> GameVault</div>
-    </footer>
-</div>
-
+<footer class="gv-footer glass">© <span id="year-news"></span> GameVault</footer>
+<script>document.getElementById('year-news').textContent = new Date().getFullYear();</script>
 <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,42 +1,40 @@
-/* games.js - load games, render lists, filters, search, favs */
+/* games.js - loading and rendering games (RAWG optional) */
 (function(){
-  // CONFIG
-  const RAWG_KEY = ''; // Optional: вставь свой RAWG API key сюда
+  const RAWG_KEY = ''; // <-- вставь сюда ключ (опционально)
   const RAWG_BASE = 'https://api.rawg.io/api';
   const PAGE_SIZE = 12;
 
-  // fallback demo data (will be used if RAWG fails or key missing)
   const DEMO = [
-    {id: 'slope', name:'Slope', released:'2014', rating:4.3, genres:[{name:'Arcade'}], platforms:[{platform:{name:'PC'}}], background_image:'https://picsum.photos/seed/s1/600/360', slug:'slope'},
-    {id: 'run3', name:'Run 3', released:'2016', rating:4.4, genres:[{name:'Platformer'}], platforms:[{platform:{name:'PC'}}], background_image:'https://picsum.photos/seed/s2/600/360', slug:'run-3'},
-    {id: 'celeste', name:'Celeste', released:'2018', rating:4.9, genres:[{name:'Platformer'}], platforms:[{platform:{name:'PC'}}], background_image:'https://picsum.photos/seed/s3/600/360', slug:'celeste'},
-    {id: 'amongus', name:'Among Us', released:'2018', rating:4.1, genres:[{name:'Party'}], platforms:[{platform:{name:'PC'}}], background_image:'https://picsum.photos/seed/s4/600/360', slug:'among-us'},
-    {id: 'krunker', name:'Krunker', released:'2018', rating:4.2, genres:[{name:'Shooter'}], platforms:[{platform:{name:'PC'}}], background_image:'https://picsum.photos/seed/s5/600/360', slug:'krunker'}
+    {id:'slope', name:'Slope', released:'2014', rating:4.3, genres:[{name:'Arcade'}], platforms:[{platform:{name:'PC'}}], background_image:'assets/img/placeholder.jpg', slug:'slope'},
+    {id:'run3', name:'Run 3', released:'2016', rating:4.4, genres:[{name:'Platformer'}], platforms:[{platform:{name:'PC'}}], background_image:'assets/img/placeholder2.jpg', slug:'run-3'},
+    {id:'celeste', name:'Celeste', released:'2018', rating:4.9, genres:[{name:'Platformer'}], platforms:[{platform:{name:'PC'}}], background_image:'assets/img/placeholder3.jpg', slug:'celeste'},
+    {id:'amongus', name:'Among Us', released:'2018', rating:4.1, genres:[{name:'Party'}], platforms:[{platform:{name:'PC'}}], background_image:'assets/img/placeholder4.jpg', slug:'among-us'},
+    {id:'krunker', name:'Krunker', released:'2018', rating:4.2, genres:[{name:'Shooter'}], platforms:[{platform:{name:'PC'}}], background_image:'assets/img/placeholder5.jpg', slug:'krunker'}
   ];
 
-  // utils
-  function safeFetch(url){ return fetch(url).then(r=> r.ok ? r.json() : Promise.reject(r.status)).catch(()=>null); }
+  function safeFetch(url){
+    return fetch(url).then(r => r.ok ? r.json() : Promise.reject(r.status)).catch(()=>null);
+  }
 
-  // renderers
   function makeCard(game){
     const id = game.slug || game.id || game.name;
-    const genres = (game.genres || []).map(g => g.name).slice(0,2).join(', ');
-    const platforms = (game.platforms || []).map(p => p.platform ? p.platform.name : (p.name||'')).slice(0,2).join(', ');
+    const genres = (game.genres||[]).map(g=>g.name).slice(0,2).join(', ');
+    const platforms = (game.platforms||[]).map(p=> p.platform ? p.platform.name : p.name ).slice(0,2).join(', ');
     const img = game.background_image || 'assets/img/placeholder.jpg';
     const rating = game.rating || 0;
     const released = game.released || '';
+    const fav = isFav(id);
 
-    const favClass = isFav(id) ? 'fav-on' : '';
     const html = `
       <article class="card">
         <img class="thumb" data-src="${img}" alt="${escape(game.name)}" />
         <div>
-          <h3><a href="game.html?id=${encodeURIComponent(game.slug||game.id||game.name)}">${escape(game.name)}</a></h3>
+          <h3><a href="game.html?id=${encodeURIComponent(id)}">${escape(game.name)}</a></h3>
           <div class="meta">${platforms} · ⭐ ${rating} · ${released}</div>
           <div class="tags">${genres ? `<span class="tag">${escape(genres)}</span>` : ''}</div>
           <div style="display:flex;gap:8px;margin-top:10px;align-items:center">
             <button class="btn small view-btn" data-id="${id}">View</button>
-            <button class="btn-ghost small fav-btn ${favClass}" data-id="${id}">${isFav(id)?'♥':'♡'}</button>
+            <button class="btn-ghost small fav-btn ${fav ? 'fav-on' : ''}" data-id="${id}">${fav ? '♥' : '♡'}</button>
           </div>
         </div>
       </article>
@@ -44,12 +42,9 @@
     return htmlToElem(html);
   }
 
-  // render list into container (clears if reset true)
-  async function renderList(opts = {}){
-    const {container, page=1, page_size=PAGE_SIZE, query='', genres='', platforms='', ordering='-rating', append=false} = opts;
+  async function renderList({container, page=1, page_size=PAGE_SIZE, query='', genres='', platforms='', ordering='-rating', append=false}){
     const cont = document.getElementById(container);
     if(!cont) return;
-
     if(!append) cont.innerHTML = '';
 
     // Try RAWG
@@ -71,7 +66,7 @@
       }
     }
 
-    // Fallback: filter DEMO
+    // fallback DEMO
     let arr = DEMO.slice();
     if(query) arr = arr.filter(g => (g.name + ' ' + (g.genres||[]).map(x=>x.name).join(' ')).toLowerCase().includes(query.toLowerCase()));
     if(genres) arr = arr.filter(g => (g.genres||[]).some(x => x.name.toLowerCase().includes(genres.toLowerCase())));
@@ -82,9 +77,7 @@
     attachButtons(cont);
   }
 
-  // featured + top/trending convenience
   async function initIndex(){
-    // featured first demo
     const featuredWrap = document.getElementById('featured-wrap');
     if(featuredWrap){
       const game = DEMO[0];
@@ -101,16 +94,14 @@
       GV.observeLazy(featuredWrap);
     }
 
-    // render two lists
-    await renderList({container: 'trending', page_size:6, ordering:'-added'});
-    await renderList({container: 'top-rated', page_size:6, ordering:'-rating'});
+    await renderList({container:'trending', page_size:6, ordering:'-added'});
+    await renderList({container:'top-rated', page_size:6, ordering:'-rating'});
   }
 
-  // catalog page init
   let catalogPage = 1;
   async function initCatalog(){
-    // populate genre & platform lists (from RAWG if possible)
     if(RAWG_KEY){
+      // load genres
       const genresRes = await safeFetch(RAWG_BASE + '/genres?key=' + RAWG_KEY);
       if(genresRes && genresRes.results){
         const sel = document.getElementById('filter-genre');
@@ -127,7 +118,6 @@
         });
       }
     } else {
-      // basic demo options
       ['Arcade','Platformer','Shooter','Party'].forEach(g => {
         const o = document.createElement('option'); o.value = g; o.textContent = g; document.getElementById('filter-genre').appendChild(o);
       });
@@ -136,11 +126,9 @@
       });
     }
 
-    // initial render
     await renderList({container:'catalog-grid', page:catalogPage, page_size: PAGE_SIZE});
   }
 
-  // attach button handlers for fav/view
   function attachButtons(root){
     (root || document).querySelectorAll('.fav-btn').forEach(btn => {
       btn.onclick = () => {
@@ -149,7 +137,6 @@
         btn.classList.toggle('fav-on');
         btn.textContent = isFav(id) ? '♥' : '♡';
       };
-      // set initial state
       btn.textContent = isFav(btn.dataset.id) ? '♥' : '♡';
     });
 
@@ -161,67 +148,91 @@
     });
   }
 
-  // page-specific init
+  // page init
   document.addEventListener('DOMContentLoaded', async () => {
     const page = window.GV_PAGE || 'index';
 
-    // search on header
     const topSearch = document.getElementById('top-search');
     if(topSearch){
-      topSearch.addEventListener('keydown', e => { if(e.key === 'Enter'){ const q = topSearch.value.trim(); window.location = 'catalog.html' + (q ? ('?q=' + encodeURIComponent(q)) : ''); }});
+      topSearch.addEventListener('keydown', e => {
+        if(e.key === 'Enter'){
+          const q = topSearch.value.trim();
+          window.location = 'catalog.html' + (q ? ('?q=' + encodeURIComponent(q)) : '');
+        }
+      });
     }
 
-    if(page === 'index'){
-      await initIndex();
-    }
-
-    if(page === 'catalog'){
+    if(page === 'index') await initIndex();
+    if(page === 'catalog') {
       await initCatalog();
-
-      // handlers
-      document.getElementById('load-more').addEventListener('click', async () => {
-        catalogPage++;
-        await renderList({container:'catalog-grid', page:catalogPage, append:true});
+      document.getElementById('load-more').addEventListener('click', async ()=>{
+        catalogPage++; await renderList({container:'catalog-grid', page:catalogPage, append:true});
       });
-
-      document.getElementById('catalog-search').addEventListener('input', debounce(async (e) => {
-        catalogPage = 1;
-        await renderList({container:'catalog-grid', page:1, query: e.target.value, append:false});
-      }, 300));
-
-      document.getElementById('filter-genre').addEventListener('change', async (e) => {
-        catalogPage = 1; await renderList({container:'catalog-grid', page:1, genres: e.target.value, append:false});
-      });
-      document.getElementById('filter-platform').addEventListener('change', async (e) => {
-        catalogPage = 1; await renderList({container:'catalog-grid', page:1, platforms: e.target.value, append:false});
-      });
-      document.getElementById('sort-by').addEventListener('change', async (e) => {
-        catalogPage = 1; await renderList({container:'catalog-grid', page:1, ordering: e.target.value, append:false});
-      });
-      document.getElementById('reset-filters').addEventListener('click', async () => {
-        document.getElementById('catalog-search').value = '';
-        document.getElementById('filter-genre').value = '';
-        document.getElementById('filter-platform').value = '';
-        document.getElementById('sort-by').value = '-rating';
-        catalogPage = 1;
-        await renderList({container:'catalog-grid', page:1, append:false});
-      });
+      document.getElementById('catalog-search').addEventListener('input', debounce(async (e)=>{
+        catalogPage = 1; await renderList({container:'catalog-grid', page:1, query:e.target.value, append:false});
+      },300));
+      document.getElementById('filter-genre').addEventListener('change', async (e)=>{ catalogPage=1; await renderList({container:'catalog-grid', page:1, genres:e.target.value, append:false});});
+      document.getElementById('filter-platform').addEventListener('change', async (e)=>{ catalogPage=1; await renderList({container:'catalog-grid', page:1, platforms:e.target.value, append:false});});
+      document.getElementById('sort-by').addEventListener('change', async (e)=>{ catalogPage=1; await renderList({container:'catalog-grid', page:1, ordering:e.target.value, append:false});});
+      document.getElementById('reset-filters').addEventListener('click', async ()=>{ document.getElementById('catalog-search').value=''; document.getElementById('filter-genre').value=''; document.getElementById('filter-platform').value=''; document.getElementById('sort-by').value='-rating'; catalogPage=1; await renderList({container:'catalog-grid', page:1, append:false});});
     }
 
-    // make sure lazy images are observed every time
-    GV.observeLazy(document);
+    // game page rendering
+    if(page === 'game'){
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      await renderGamePage(id);
+    }
 
-    // attach any fav buttons on initial content
+    GV.observeLazy(document);
     attachButtons(document);
   });
 
-  // small debounce
-  function debounce(fn, ms=200){
-    let t;
-    return function(...args){
-      clearTimeout(t);
-      t = setTimeout(()=>fn.apply(this,args), ms);
-    };
+  // render single game page
+  async function renderGamePage(id){
+    const wrap = document.getElementById('game-wrap');
+    if(!wrap) return;
+    wrap.innerHTML = '<div class="muted">Loading...</div>';
+    // try RAWG
+    if(RAWG_KEY){
+      const url = `${RAWG_BASE}/games/${encodeURIComponent(id)}?key=${RAWG_KEY}`;
+      const data = await safeFetch(url);
+      if(data){
+        wrap.innerHTML = renderGameHtml(data);
+        GV.observeLazy(wrap);
+        return;
+      }
+    }
+    // fallback: find in DEMO
+    const game = DEMO.find(g => (g.slug || g.id || g.name) === id) || DEMO[0];
+    wrap.innerHTML = renderGameHtml(game);
+    GV.observeLazy(wrap);
   }
+
+  function renderGameHtml(g){
+    const genres = (g.genres||[]).map(x=>x.name).join(', ');
+    const platforms = (g.platforms||[]).map(p=> p.platform ? p.platform.name : (p.name||'')).join(', ');
+    const img = g.background_image || 'assets/img/placeholder.jpg';
+    return `
+      <div class="game-page glass" style="display:grid;grid-template-columns:1fr 360px;gap:20px">
+        <div>
+          <img class="cover" data-src="${img}" alt="${escape(g.name)}" />
+          <h1>${escape(g.name)}</h1>
+          <div class="meta">${platforms} · ${genres} · ⭐ ${g.rating || ''}</div>
+          <p style="margin-top:12px">${escape(g.description_raw || g.description || 'Описание отсутствует')}</p>
+        </div>
+        <aside class="glass" style="padding:12px;border-radius:12px">
+          <h3>Info</h3>
+          <p>Релиз: ${g.released || '—'}</p>
+          <p>Рейтинг: ${g.rating || '—'}</p>
+          <p>Платформы: ${platforms}</p>
+          <div style="margin-top:12px"><a class="btn" href="#">Open Store</a></div>
+        </aside>
+      </div>
+    `;
+  }
+
+  // debounce
+  function debounce(fn, ms=200){ let t; return function(...args){ clearTimeout(t); t=setTimeout(()=>fn.apply(this,args), ms); }; }
 
 })();
