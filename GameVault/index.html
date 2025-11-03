@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GameVault — Home</title>
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <meta name="description" content="GameVault — современный игровой хаб" />
+</head>
+<body class="gv-theme-dark">
+<!-- Header (glass) -->
+<header class="gv-header glass">
+    <div class="gv-left">
+        <a class="gv-logo" href="index.html">GameVault</a>
+        <nav class="gv-nav">
+            <a href="index.html" class="active">Home</a>
+            <a href="catalog.html">Catalog</a>
+            <a href="news.html">News</a>
+            <a href="about.html">About</a>
+        </nav>
+    </div>
+    <div class="gv-right">
+        <input id="top-search" class="gv-search" placeholder="Поиск игр — нажми Enter" />
+        <button id="theme-toggle" class="btn-ghost">Тема</button>
+        <a id="discord-link" class="btn-ghost" href="login.html">Sign in</a>
+    </div>
+</header>
+
+<main class="gv-container">
+    <section class="hero glass">
+        <div class="hero-left">
+            <h1>GameVault</h1>
+            <p class="hero-lead">Играй умно. Играй со стилем. Быстрый доступ к описаниям, требованиям и ссылкам на магазины.</p>
+            <div class="hero-ctas">
+                <a class="btn" href="catalog.html">Открыть каталог</a>
+                <a class="btn btn-ghost" href="about.html">О проекте</a>
+            </div>
+        </div>
+        <div class="hero-right" id="featured-wrap">
+            <!-- featured card injected by JS -->
+        </div>
+    </section>
+
+    <section class="section">
+        <h2>Trending now</h2>
+        <div id="trending" class="cards-grid"></div>
+    </section>
+
+    <section class="section">
+        <h2>Top rated</h2>
+        <div id="top-rated" class="cards-grid"></div>
+    </section>
+</main>
+
+<footer class="gv-footer glass">
+    <div>© <span id="year"></span> GameVault — contact: <a href="mailto:djudosoej247hdh@outlook.com">djudosoej247hdh@outlook.com</a> — Discord: <strong>ketume</strong></div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+<script src="assets/js/games.js"></script>
+<script>
+    // small init
+    document.getElementById('year').textContent = new Date().getFullYear();
+    // tell games.js this is index page
+    window.GV_PAGE = 'index';
+</script>
+</body>
+</html>

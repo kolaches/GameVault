@@ -1,44 +1,59 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>GameVault — Catalog</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700;800&display=swap" rel="stylesheet">
 </head>
-<body class="gv-body">
-<header class="gv-header">
-    <a class="gv-logo" href="index.html">GameVault</a>
-    <nav class="gv-nav">
-        <a href="catalog.html" class="active">Catalog</a>
-        <a href="about.html">About</a>
-    </nav>
+<body class="gv-theme-dark">
+<header class="gv-header glass">
+    <div class="gv-left">
+        <a class="gv-logo" href="index.html">GameVault</a>
+        <nav class="gv-nav">
+            <a href="index.html">Home</a>
+            <a href="catalog.html" class="active">Catalog</a>
+            <a href="about.html">About</a>
+        </nav>
+    </div>
+    <div class="gv-right">
+        <input id="catalog-search" class="gv-search" placeholder="Поиск по каталогу..." />
+        <button id="theme-toggle-2" class="btn-ghost">Тема</button>
+        <a id="discord-link-2" class="btn-ghost" href="login.html">Sign in</a>
+    </div>
 </header>
 
+<main class="gv-container">
+    <h1>Каталог игр</h1>
 
-<main class="container">
-    <section class="catalog-toolbar">
-        <div class="left">
-            <input id="catalog-search" placeholder="Поиск по каталогу..." />
-        </div>
-        <div class="right">
-            <select id="catalog-genre"><option value="all">Все жанры</option></select>
-            <select id="catalog-sort"><option value="popular">По популярности</option><option value="rating">По рейтингу</option><option value="alpha">A → Z</option></select>
-        </div>
-    </section>
+    <div class="filters glass">
+        <select id="filter-genre" class="select"><option value="">Все жанры</option></select>
+        <select id="filter-platform" class="select"><option value="">Все платформы</option></select>
+        <select id="sort-by" class="select">
+            <option value="-rating">По рейтингу</option>
+            <option value="-released">Новые</option>
+            <option value="name">A → Z</option>
+        </select>
+        <button id="reset-filters" class="btn-ghost">Сброс</button>
+    </div>
 
+    <div id="catalog-grid" class="cards-grid"></div>
 
-    <section id="catalog-grid" class="card-grid"></section>
-
-
+    <div class="center">
+        <button id="load-more" class="btn">Загрузить ещё</button>
+    </div>
 </main>
 
-
-<footer class="gv-footer">
-    <div>© <span id="year2"></span> GameVault</div>
+<footer class="gv-footer glass">
+    © <span id="year-catalog"></span> GameVault
 </footer>
 
-
-<script src="script.js"></script>
+<script src="assets/js/main.js"></script>
+<script src="assets/js/games.js"></script>
+<script>
+    document.getElementById('year-catalog').textContent = new Date().getFullYear();
+    window.GV_PAGE = 'catalog';
+</script>
 </body>
 </html>
