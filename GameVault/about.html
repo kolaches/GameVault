@@ -1,20 +1,46 @@
 <!doctype html>
-<html lang="ru">
+<html lang="en">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>About — GameVault</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="styles.css" />
 </head>
-<body>
-<div class="app">
-    <header class="site-header"><div class="logo"><a href="../index.html">GameVault</a></div></header>
-    <main class="container">
+<body class="gv-body">
+<header class="gv-header">
+    <a class="gv-logo" href="index.html">GameVault</a>
+    <nav class="gv-nav">
+        <a href="catalog.html">Catalog</a>
+        <a href="about.html" class="active">About</a>
+    </nav>
+</header>
+
+
+<main class="container about-page">
+    <article class="about-card">
         <h1>About GameVault</h1>
-        <p>GameVault is a curated portal for PC and console gamers...</p>
-    </main>
-    <footer class="site-footer"><div>© <span id="year6"></span> GameVault</div></footer>
-</div>
+        <p class="tagline">Играй умно. Играй со стилем.</p>
+
+
+        <p><strong>GameVault</strong> — премиальный игровой хаб, в котором собраны актуальные данные о проектах: описания, системные требования, оценки и прямые ссылки на магазины. Мы упрощаем поиск — чтобы ты тратил время на игры, а не на их исследование.</p>
+
+
+        <ul>
+            <li><strong>Умный поиск:</strong> жанры, теги, платформы и рейтинги.</li>
+            <li><strong>Полные карточки:</strong> скриншоты, описание, режимы и метки.</li>
+            <li><strong>Проверка требований:</strong> быстрое сравнение конфигураций.</li>
+        </ul>
+
+
+        <p>Темная, спокойная тема с фиолетовыми акцентами формирует атмосферу современного игрового хаба — профессионально и удобно.</p>
+
+
+        <p>Присоединяйся к сообществу, находи жемчужины и играй со вкусом.</p>
+    </article>
+</main>
+
+
+<footer class="gv-footer">© <span id="year3"></span> GameVault</footer>
+<script>document.getElementById('year3').textContent = new Date().getFullYear();</script>
 </body>
 </html>
