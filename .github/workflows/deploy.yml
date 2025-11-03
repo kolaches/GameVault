@@ -1,41 +1,50 @@
-name: GameVault
+name: Deploy
 
 on:
   push:
-    branches: ["main"]
-  workflow_dispatch:
-
-permissions:
-  pages: write
-  id-token: write
-  contents: read
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+    defaults:
+      run:
+        working-directory: ./GameVault
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
           node-version: 18
 
-      - name: Install
+      - name: Install Dependencies
         run: npm install
 
-      - name: Build
+      - name: Build Project
         run: npm run build
 
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload Production Build
+        uses: actions/upload-pages-artifact@v2
         with:
-          path: ./dist
+          path: ./GameVault/dist
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
+
+    permissions:
+      pages: write
+      id-token: write
+
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+
     steps:
-      - name: Deploy
-        uses: actions/deploy-pages@v4
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
