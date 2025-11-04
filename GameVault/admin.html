@@ -1,28 +1,60 @@
 <!doctype html>
-<html>
+<html lang="ru">
 <head>
-    <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>Admin — GameVault</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>GameVault — Админ</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div class="container">
-    <h1>Admin (local)</h1>
-    <div class="admin-note">This is a local admin panel — changes stored in your browser (localStorage). Use for demo.</div>
-    <div id="adminArea">
-        <form id="adminAdd" class="admin-form" style="margin-bottom:12px" onsubmit="return false;">
-            <input id="adm_id" placeholder="id (slug)" class="select" required />
-            <input id="adm_title" placeholder="Title" class="select" required />
-            <input id="adm_cover" placeholder="Cover URL (optional)" class="select" />
-            <input id="adm_genre" placeholder="Genre" class="select" />
-            <button id="admBtn" class="btn" type="submit">Add Game</button>
-        </form>
-        <div class="admin-list"></div>
-    </div>
-    <p style="margin-top:18px"><a href="index.html" class="btn ghost">Back to site</a></p>
-</div>
-<script src="js/games.js"></script>
-<script src="js/main.js"></script>
+<header class="gv-topbar">
+    <div class="gv-left"><div class="gv-logo">GameVault</div></div>
+    <div class="gv-center"></div>
+    <div class="gv-right"><a href="catalog.html">Каталог</a></div>
+</header>
+
+<main class="container" style="grid-template-columns:1fr;">
+    <section class="panel">
+        <h1>Панель администратора (демо)</h1>
+        <p class="muted">Здесь можно разместить инструменты управления контентом: добавление игр, правка games.json, управление новостями и т.д.</p>
+
+        <div id="admin-area">
+            <p class="muted">Для demo вы можете редактировать файл js/games.json вручную или добавить UI для редактирования (могу подготовить).</p>
+            <button id="download-games" class="gv-btn">Скачать games.json</button>
+            <input id="upload-games" type="file" accept=".json" style="margin-left:12px;">
+            <p id="admin-msg" class="muted" style="margin-top:12px;"></p>
+        </div>
+    </section>
+</main>
+
+<script>
+    document.getElementById('download-games').addEventListener('click', async ()=>{
+      const res = await fetch('js/games.json');
+      if(!res.ok){ alert('Не удалось прочитать games.json'); return; }
+      const text = await res.text();
+      const blob = new Blob([text], { type: 'application/json' });
+      const a = document.createElement('a');
+      a.href = URL.createObjectURL(blob);
+      a.download = 'games.json';
+      a.click();
+    });
+
+    document.getElementById('upload-games').addEventListener('change', (e)=>{
+      const f = e.target.files[0];
+      if(!f) return;
+      const reader = new FileReader();
+      reader.onload = ()=> {
+        try{
+          const json = JSON.parse(reader.result);
+          // В demo мы просто проверяем корректность и сохраняем в localStorage (не перезаписываем файл на сервер)
+          localStorage.setItem('gv_games_upload', JSON.stringify(json));
+          document.getElementById('admin-msg').textContent = 'Файл загружен в localStorage в виде demo (серверную замену сделать вручную).';
+        }catch(err){
+          document.getElementById('admin-msg').textContent = 'Ошибка парсинга JSON: ' + err.message;
+        }
+      };
+      reader.readAsText(f);
+    });
+</script>
 </body>
 </html>

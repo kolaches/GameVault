@@ -3,18 +3,34 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>About — GameVault</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>GameVault — О проекте</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div class="app">
-    <header class="site-header"><div class="logo"><a href="index.html">GameVault</a></div></header>
-    <main class="container">
-        <h1>About GameVault</h1>
-        <p>GameVault is a curated portal for PC and console gamers...</p>
-    </main>
-    <footer class="site-footer"><div>© <span id="year6"></span> GameVault</div></footer>
-</div>
+<header class="gv-topbar">
+    <div class="gv-left"><div class="gv-logo">GameVault</div></div>
+    <div class="gv-center"></div>
+    <div class="gv-right"><a href="catalog.html">Каталог</a></div>
+</header>
+
+<main class="container" style="grid-template-columns:1fr;">
+    <section class="panel">
+        <h1>О проекте GameVault</h1>
+        <p class="muted">GameVault — это демонстрационный магазин/каталог игр в стиле Steam. Здесь можно просматривать игры, читать описания и требования, добавлять в избранное и открывать ссылки на магазины.</p>
+
+        <h3>Цели проекта</h3>
+        <ul>
+            <li>Красивый и быстрый интерфейс в тёмном стиле, похожий на Steam.</li>
+            <li>Каталог 50+ игр с реальными обложками и информацией.</li>
+            <li>Демо‑вход через Steam/Discord (требует поднятого backend).</li>
+        </ul>
+
+        <h3>Технически</h3>
+        <p class="muted">Фронтенд: HTML/CSS/Vanilla JS. Бэкенд (опционально): Node.js + Passport (Steam/Discord). Для production рекомендую хранить сессии в Redis, включить HTTPS и настроить безопасные cookies.</p>
+
+        <h3>Контрибьютинг</h3>
+        <p>Если хочешь внести правки — создавай PR в репозиторий, добавляй новые игры в js/games.json и загружай оптимизированные изображения в GameVault/assets/img/.</p>
+    </section>
+</main>
 </body>
 </html>

@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GameVault — Регистрация</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="gv-topbar">
+    <div class="gv-left"><div class="gv-logo">GameVault</div></div>
+    <div class="gv-center"></div>
+    <div class="gv-right"><a href="login.html" class="gv-btn ghost">Вход</a></div>
+</header>
+
+<main class="container" style="grid-template-columns:1fr; gap:18px;">
+    <section class="panel" style="max-width:720px;margin:0 auto;">
+        <h1>Создать аккаунт (демо)</h1>
+        <p class="muted">Этот пример сохраняет аккаунт локально в браузере. Для реальной регистрации подключите backend с безопасным хранением паролей.</p>
+
+        <form id="register-form" style="display:grid;gap:10px;">
+            <input id="r-name" placeholder="Имя пользователя" required style="padding:10px;border-radius:6px;background:var(--panel);border:1px solid rgba(255,255,255,0.03);color:inherit">
+            <input id="r-email" type="email" placeholder="Email" required style="padding:10px;border-radius:6px;background:var(--panel);border:1px solid rgba(255,255,255,0.03);color:inherit">
+            <input id="r-pass" type="password" placeholder="Пароль" required style="padding:10px;border-radius:6px;background:var(--panel);border:1px solid rgba(255,255,255,0.03);color:inherit">
+            <div style="display:flex;gap:8px;">
+                <button type="submit" class="gv-btn">Создать аккаунт</button>
+                <a href="login.html" class="gv-btn ghost">У меня есть аккаунт</a>
+            </div>
+        </form>
+
+        <p id="reg-msg" class="muted"></p>
+    </section>
+</main>
+
+<script>
+    // Локальная регистрация: сохраняем пользователя в localStorage.users (demo only)
+    document.getElementById('register-form').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const name = document.getElementById('r-name').value.trim();
+      const email = document.getElementById('r-email').value.trim();
+      const pass = document.getElementById('r-pass').value;
+      if(!name || !email || !pass){ document.getElementById('reg-msg').textContent = 'Заполните все поля.'; return; }
+      const users = JSON.parse(localStorage.getItem('gv_users')||'[]');
+      if(users.find(u=>u.email === email)){ document.getElementById('reg-msg').textContent = 'Пользователь с таким email уже существует.'; return; }
+      const user = { id: 'u_'+Date.now(), name, email, passHash: btoa(pass), created: new Date().toISOString() };
+      users.push(user);
+      localStorage.setItem('gv_users', JSON.stringify(users));
+      // автоматически логиним
+      localStorage.setItem('gv_user_local', JSON.stringify({ id: user.id, name: user.name, email: user.email }));
+      document.getElementById('reg-msg').textContent = 'Аккаунт создан. Перенаправление...';
+      setTimeout(()=>location.href='profile.html',800);
+    });
+</script>
+</body>
+</html>

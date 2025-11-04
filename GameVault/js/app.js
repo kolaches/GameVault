@@ -1,32 +1,32 @@
-// Обновлённый JS: фильтры, сортировка, вид (сетка/список), ленивые обложки, пагинация
-const appEl = document.getElementById('app');
+// app.js — frontend logic (catalog, filters, modal, favorites, login redirect)
+// Залей games.json рядом с этим файлом (в той же папке).
 const gridEl = document.getElementById('grid');
+const tpl = document.getElementById('card-template');
 const searchInput = document.getElementById('search');
 const sortSelect = document.getElementById('sort');
 const viewToggle = document.getElementById('btn-view-toggle');
 const resultsCount = document.getElementById('results-count');
 const platformFiltersEl = document.getElementById('platform-filters');
 const genreFiltersEl = document.getElementById('genre-filters');
-const priceFilter = document.getElementById('price-filter');
 const clearFiltersBtn = document.getElementById('clear-filters');
 const modal = document.getElementById('modal');
 const modalBody = document.getElementById('modal-body');
 const modalClose = document.getElementById('modal-close');
 const favCountEl = document.getElementById('fav-count');
 const randomBtn = document.getElementById('random-game');
-const tpl = document.getElementById('card-template');
+const loginBtn = document.getElementById('btn-login');
 
 let games = [];
-let favorites = new Set(JSON.parse(localStorage.getItem('gv_favs')||'[]'));
+let favorites = new Set(JSON.parse(localStorage.getItem('gv_favs') || '[]'));
 let activePlatforms = new Set();
 let activeGenres = new Set();
-let view = localStorage.getItem('gv_view') || 'grid'; // grid or list
+let view = localStorage.getItem('gv_view') || 'grid';
 let currentPage = 1;
-const PAGE_SIZE = 20;
+const PAGE_SIZE = 24;
 
 updateFavCount();
 
-// подгружаем games.json
+// Load games.json
 async function loadGames(){
   try{
     const res = await fetch('games.json');
@@ -36,51 +36,43 @@ async function loadGames(){
     games = [];
   }
   populateFilters();
+  render();
 }
 
-// формируем набор фильтров по данным
 function populateFilters(){
   const platforms = new Set();
   const genres = new Set();
-  games.forEach(g=>{
-    (g.platforms||[]).forEach(p=>platforms.add(p));
-    (g.genres||[]).forEach(gx=>genres.add(gx));
+  games.forEach(g => {
+    (g.platforms || []).forEach(p => platforms.add(p));
+    (g.genres || []).forEach(gr => genres.add(gr));
   });
   platformFiltersEl.innerHTML = '';
-  Array.from(platforms).sort().forEach(p=>{
+  Array.from(platforms).sort().forEach(p => {
     const btn = document.createElement('button');
-    btn.className='chip';
-    btn.textContent=p;
+    btn.className = 'chip';
+    btn.textContent = p;
     btn.addEventListener('click', ()=>{ btn.classList.toggle('active'); if(btn.classList.contains('active')) activePlatforms.add(p); else activePlatforms.delete(p); currentPage=1; render(); });
     platformFiltersEl.appendChild(btn);
   });
-  genreFiltersEl.innerHTML='';
-  Array.from(genres).sort().forEach(gx=>{
+  genreFiltersEl.innerHTML = '';
+  Array.from(genres).sort().forEach(gx => {
     const btn = document.createElement('button');
-    btn.className='chip'; btn.textContent=gx;
+    btn.className = 'chip'; btn.textContent = gx;
     btn.addEventListener('click', ()=>{ btn.classList.toggle('active'); if(btn.classList.contains('active')) activeGenres.add(gx); else activeGenres.delete(gx); currentPage=1; render(); });
     genreFiltersEl.appendChild(btn);
   });
 }
 
-// Основной рендер: фильтрация, сортировка, пагинация
 function render(){
-  const q = (searchInput.value||'').trim().toLowerCase();
-  let filtered = games.filter(g=>{
-    let hay = (g.title + ' ' + (g.genres||[]).join(' ') + ' ' + (g.platforms||[]).join(' ') + ' ' + (g.description||'')).toLowerCase();
+  const q = (searchInput.value || '').trim().toLowerCase();
+  let filtered = games.filter(g => {
+    const hay = (g.title + ' ' + (g.genres||[]).join(' ') + ' ' + (g.platforms||[]).join(' ') + ' ' + (g.description||'')).toLowerCase();
     if(q && !hay.includes(q)) return false;
     if(activePlatforms.size){
-      const has = (g.platforms||[]).some(p=>activePlatforms.has(p));
-      if(!has) return false;
+      if(! (g.platforms || []).some(p => activePlatforms.has(p))) return false;
     }
     if(activeGenres.size){
-      const hasg = (g.genres||[]).some(gg=>activeGenres.has(gg));
-      if(!hasg) return false;
-    }
-    if(priceFilter && priceFilter.value !== 'any'){
-      if(priceFilter.value === 'free' && !g.price_free) return false;
-      if(priceFilter.value === 'paid' && g.price_free) return false;
-      if(priceFilter.value === 'discount' && !g.discount) return false;
+      if(! (g.genres || []).some(gr => activeGenres.has(gr))) return false;
     }
     return true;
   });
@@ -90,9 +82,7 @@ function render(){
   if(sort === 'new') filtered.sort((a,b)=> (b.release_date||'').localeCompare(a.release_date||''));
   else if(sort === 'alpha') filtered.sort((a,b)=> a.title.localeCompare(b.title));
   else if(sort === 'popular') filtered.sort((a,b)=> (b.popularity||0) - (a.popularity||0));
-  // relevance ~ default
 
-  // пагинация
   const total = filtered.length;
   const pages = Math.max(1, Math.ceil(total / PAGE_SIZE));
   if(currentPage > pages) currentPage = pages;
@@ -104,7 +94,6 @@ function render(){
   renderPagination(pages);
 }
 
-// рендер карточек
 function renderGrid(items){
   gridEl.innerHTML = '';
   gridEl.className = view === 'grid' ? 'gv-grid' : 'gv-grid list-view';
@@ -133,7 +122,6 @@ function renderGrid(items){
   lazyLoadImages();
 }
 
-// ленивый загрузчик простая реализация
 function lazyLoadImages(){
   const imgs = document.querySelectorAll('.cover[data-src]');
   const options = {root:null,rootMargin:'200px',threshold:0.01};
@@ -150,7 +138,6 @@ function lazyLoadImages(){
   imgs.forEach(i=>obs.observe(i));
 }
 
-// подробная карточка
 function openDetails(id){
   const g = games.find(x=>x.id===id);
   if(!g) return;
@@ -164,7 +151,7 @@ function openDetails(id){
         <h4>Системные требования</h4>
         <pre style="white-space:pre-wrap;background:rgba(255,255,255,0.02);padding:8px;border-radius:6px">${g.sysreqs || 'Не указано'}</pre>
         <div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap">
-          ${(g.storeLinks ? Object.entries(g.storeLinks).map(([k,v])=>`<a class="gv-btn" href="${v}" target="_blank">${k}</a>`).join(' ') : '')}
+          ${(g.storeLinks ? Object.entries(g.storeLinks).map(([k,v])=>`<a class="gv-btn" href="${v}" target="_blank" rel="noopener noreferrer">${k}</a>`).join(' ') : '')}
         </div>
       </div>
     </div>
@@ -174,7 +161,6 @@ function openDetails(id){
 modalClose.addEventListener('click', ()=>modal.setAttribute('aria-hidden','true'));
 modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.setAttribute('aria-hidden','true') });
 
-// избранное
 function toggleFav(id){
   if(favorites.has(id)) favorites.delete(id); else favorites.add(id);
   localStorage.setItem('gv_favs', JSON.stringify([...favorites]));
@@ -182,9 +168,9 @@ function toggleFav(id){
 }
 function updateFavCount(){ favCountEl.textContent = String(favorites.size); }
 
-// пагинация
 function renderPagination(pages){
   const pag = document.getElementById('pagination');
+  if(!pag) return;
   if(pages <= 1){ pag.style.display='none'; return; }
   pag.style.display='flex'; pag.innerHTML='';
   for(let i=1;i<=pages;i++){
@@ -197,20 +183,18 @@ function renderPagination(pages){
   }
 }
 
-// события UI
+// Events
 searchInput.addEventListener('input', ()=>{ currentPage=1; render(); });
 sortSelect.addEventListener('change', ()=>{ currentPage=1; render(); });
-priceFilter && priceFilter.addEventListener('change', ()=>{ currentPage=1; render(); });
 clearFiltersBtn.addEventListener('click', ()=>{
   activePlatforms.clear(); activeGenres.clear();
   document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));
-  priceFilter.value = 'any';
   currentPage=1; render();
 });
 viewToggle.addEventListener('click', ()=>{
   view = view === 'grid' ? 'list' : 'grid';
   localStorage.setItem('gv_view', view);
-  viewToggle.textContent = view === 'grid' ? '▦' : '≡';
+  document.getElementById('view-mode').textContent = view === 'grid' ? 'Сетка' : 'Список';
   render();
 });
 randomBtn && randomBtn.addEventListener('click', ()=>{
@@ -218,14 +202,13 @@ randomBtn && randomBtn.addEventListener('click', ()=>{
   const g = games[Math.floor(Math.random()*games.length)];
   openDetails(g.id);
 });
-
-// login button kept as demo
-document.getElementById('btn-login').addEventListener('click', ()=>{
-  alert('Для реального входа через Discord настройте OAuth как описано в README.');
+loginBtn.addEventListener('click', ()=>{
+  // Перенаправление на бэкенд /auth/steam (или /auth/discord)
+  // bэкенд: server.js (passport) — настроить CLIENT_ID/SECRET и redirectURI
+  const choice = confirm('Войти через Steam? (OK) Отменить — откроется Discord вход.');
+  if(choice) location.href = '/auth/steam';
+  else location.href = '/auth/discord';
 });
 
-// инициализация
-(async function init(){
-  await loadGames();
-  render();
-})();
+// Init
+(async function init(){ await loadGames(); })();

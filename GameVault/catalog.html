@@ -4,17 +4,17 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <title>GameVault — Каталог</title>
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <header class="gv-topbar">
     <div class="gv-left">
         <div class="gv-logo">GameVault</div>
         <nav class="gv-nav">
-            <a href="#/catalog" data-route class="active">Каталог</a>
-            <a href="#/news" data-route>Новости</a>
-            <a href="#/contacts" data-route>Контакты</a>
+            <a href="catalog.html" class="active">Каталог</a>
+            <a href="news.html">Новости</a>
+            <a href="contacts.html">Контакты</a>
+            <a href="index.html">Витрина</a>
         </nav>
     </div>
 
@@ -30,13 +30,12 @@
             <option value="popular">По популярности</option>
             <option value="alpha">По алфавиту</option>
         </select>
-        <button id="btn-login" class="gv-btn">Войти (Discord)</button>
-        <a href="#/favorites" data-route class="fav-link">Избранное <span id="fav-count" class="fav-count">0</span></a>
+        <button id="btn-login" class="gv-btn" title="Войти">Войти</button>
+        <a href="favorites.html" class="fav-link">Избранное <span id="fav-count" class="fav-count">0</span></a>
     </div>
 </header>
 
-<main id="app" class="gv-main container">
-    <!-- Sidebar + content layout -->
+<main id="app" class="container">
     <aside class="gv-sidebar">
         <section class="panel">
             <h4>Фильтры</h4>
@@ -50,30 +49,29 @@
             </div>
             <div class="filter-group">
                 <label>Цена</label>
-                <div class="price-range">
-                    <select id="price-filter" class="gv-select">
-                        <option value="any">Любая</option>
-                        <option value="free">Бесплатно</option>
-                        <option value="paid">Платные</option>
-                        <option value="discount">Со скидкой</option>
-                    </select>
+                <div class="chips">
+                    <button class="chip" data-price="any">Любая</button>
+                    <button class="chip" data-price="free">Бесплатно</button>
+                    <button class="chip" data-price="paid">Платные</button>
+                    <button class="chip" data-price="discount">Со скидкой</button>
                 </div>
             </div>
             <div class="filter-group">
                 <button id="clear-filters" class="gv-btn ghost">Сбросить фильтры</button>
             </div>
         </section>
+
         <section class="panel small-info">
             <h4>Совет</h4>
-            <p>Кликните по обложке или кнопку «Подробнее», чтобы открыть карточку игры. Наведите, чтобы посмотреть быструю информацию.</p>
+            <p>Кликните на обложку или «Подробнее» — откроется детальная карточка. Кнопка входа ведёт на ваш сервер авторизации (если настроен).</p>
         </section>
     </aside>
 
     <section class="gv-content">
         <div class="gv-hero">
             <div class="hero-left">
-                <h1>Найди свою следующую игру</h1>
-                <p class="muted">Быстрый доступ к описаниям, системным требованиям и магазинам.</p>
+                <h1>Каталог игр</h1>
+                <p class="muted">Поиск, фильтры, избранное и быстрые ссылки на магазины — всё в духе Steam.</p>
             </div>
             <div class="hero-right">
                 <button id="random-game" class="gv-btn">Случайная игра</button>
@@ -82,6 +80,7 @@
 
         <div class="results-bar">
             <div id="results-count" class="muted">Найдено: 0</div>
+            <div class="view-controls muted">Вид: <span id="view-mode">Сетка</span></div>
         </div>
 
         <div id="grid" class="gv-grid" aria-live="polite"></div>
@@ -90,7 +89,6 @@
     </section>
 </main>
 
-<!-- модальное окно / подробная карточка -->
 <div id="modal" class="modal" aria-hidden="true">
     <div class="modal-content">
         <button class="modal-close" id="modal-close">&times;</button>
@@ -123,6 +121,6 @@
     </article>
 </template>
 
-<script src="app.js" defer></script>
+<script src="js/app.js" defer></script>
 </body>
 </html>

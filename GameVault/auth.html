@@ -1,31 +1,31 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
     <title>GameVault — Auth</title>
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <main class="container">
-    <h2>Авторизация</h2>
-    <p>Если вы пришли с Discord OAuth, проверьте токен ниже (demo & unsafe — для production нужен сервер)</p>
-    <pre id="info"></pre>
-    <p><a href="#/catalog" onclick="history.back();">Назад</a></p>
+    <section class="panel">
+        <h2>Авторизация</h2>
+        <p>Если вы вернулись с провайдера (Steam/Discord) — здесь можно показать результат.</p>
+        <pre id="info">Ожидание ответа...</pre>
+        <p class="muted">Примечание: для реального OAuth требуется backend (server.js).</p>
+    </section>
 </main>
+
 <script>
-    // Обрабатываем фрагмент URL после response_type=token
+    // Если используется implicit flow (access_token в хеше) — покажем его (demo)
     const info = document.getElementById('info');
     const hash = location.hash.substring(1);
     if(hash){
       const params = new URLSearchParams(hash);
-      const access_token = params.get('access_token');
-      const token_type = params.get('token_type');
-      const expires_in = params.get('expires_in');
-      info.textContent = JSON.stringify({access_token, token_type, expires_in}, null, 2);
-      // Здесь вы можете вызвать Discord API /users/@me с токеном, но это безопаснее делать на сервере.
+      const token = params.get('access_token') || params.get('code') || '—';
+      info.textContent = JSON.stringify({ token }, null, 2);
     } else {
-      info.textContent = 'Токен не найден. Если вы используете кодовый поток (response_type=code), то нужен сервер для обмена кода на токен.';
+      info.textContent = 'Токен не найден в URL. Если вы используете server-side OAuth, сервер редиректит на клиент.';
     }
 </script>
 </body>

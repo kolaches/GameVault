@@ -1,52 +1,127 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GameVault — Home</title>
-    <link rel="stylesheet" href="assets/css/styles.css" />
-    <script defer src="assets/js/ui.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GameVault — Магазин игр (Steam‑like)</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="site-header">
-    <div class="logo">
-        <img src="assets/img/logo.svg" alt="logo" class="logo-icon">
-        <a href="index.html">GameVault</a>
+<header class="gv-topbar">
+    <div class="gv-left">
+        <div class="gv-logo">GameVault</div>
+        <nav class="gv-nav">
+            <a href="#/catalog" data-route class="active">Каталог</a>
+            <a href="#/news" data-route>Новости</a>
+            <a href="#/servers" data-route>Серверы</a>
+            <a href="#/about" data-route>О проекте</a>
+        </nav>
     </div>
 
-    <nav class="nav">
-        <a href="catalog.html" data-lang="nav_catalog">Catalog</a>
-        <a href="news.html" data-lang="nav_news">News</a>
-        <a href="about.html" data-lang="nav_about">About</a>
-        <a href="contacts.html" data-lang="nav_contacts">Contacts</a>
-    </nav>
+    <div class="gv-center">
+        <input id="search" class="gv-search" placeholder="Поиск игр, жанров, платформ, описаний..." />
+    </div>
 
-    <div class="header-right">
-        <button id="langSwitch" class="btn small">EN</button>
-        <a href="login.html" class="btn small" id="loginBtn" data-lang="nav_login">Login</a>
+    <div class="gv-right">
+        <button id="btn-view-toggle" class="icon-btn" title="Переключить вид">▦</button>
+        <select id="sort" class="gv-select" aria-label="Сортировка">
+            <option value="relevance">По релевантности</option>
+            <option value="new">Сначала новые</option>
+            <option value="popular">По популярности</option>
+            <option value="alpha">По алфавиту</option>
+        </select>
+        <button id="btn-login" class="gv-btn" title="Войти">Войти</button>
+        <a href="#/favorites" data-route class="fav-link">Избранное <span id="fav-count" class="fav-count">0</span></a>
     </div>
 </header>
 
-<section class="hero container">
-    <div class="hero-left">
-        <h1 data-lang="hero_title">Discover, explore, and track your favorite games</h1>
-        <p class="subtitle" data-lang="hero_sub">
-            GameVault is a modern gaming hub designed for players who want fast and convenient access to game information.
-        </p>
-        <a href="catalog.html" class="btn big" data-lang="hero_btn">Open Catalog</a>
-    </div>
-    <img src="assets/img/featured.jpg" alt="Featured" class="hero-cover">
-</section>
+<main id="app" class="container">
+    <aside class="gv-sidebar">
+        <section class="panel">
+            <h4>Фильтры</h4>
+            <div class="filter-group">
+                <label>Платформа</label>
+                <div class="chips" id="platform-filters"></div>
+            </div>
+            <div class="filter-group">
+                <label>Жанр</label>
+                <div class="chips" id="genre-filters"></div>
+            </div>
+            <div class="filter-group">
+                <label>Цена</label>
+                <div class="chips">
+                    <button class="chip" data-price="any">Любая</button>
+                    <button class="chip" data-price="free">Бесплатно</button>
+                    <button class="chip" data-price="paid">Платные</button>
+                    <button class="chip" data-price="discount">Со скидкой</button>
+                </div>
+            </div>
+            <div class="filter-group">
+                <button id="clear-filters" class="gv-btn ghost">Сбросить фильтры</button>
+            </div>
+        </section>
 
-<section class="container trending">
-    <h2 data-lang="trending_title">🔥 Trending Games</h2>
-    <div class="cards" id="trendingGames">
-        <!-- игры будут добавляться через JS -->
-    </div>
-</section>
+        <section class="panel small-info">
+            <h4>Совет</h4>
+            <p>Кликните на обложку или «Подробнее», чтобы открыть окно товара. Наведите курсор для быстрого предпросмотра. Вход через Steam/Discord доступен через сервер.</p>
+        </section>
+    </aside>
 
-<footer class="site-footer">
-    <p>© 2025 GameVault. All rights reserved.</p>
-</footer>
+    <section class="gv-content">
+        <div class="gv-hero">
+            <div class="hero-left">
+                <h1>Каталог — Найди свою следующую игру</h1>
+                <p class="muted">Реальные игры, требования, ссылки в магазины и быстрые переходы.</p>
+            </div>
+            <div class="hero-right">
+                <button id="random-game" class="gv-btn">Случайная игра</button>
+            </div>
+        </div>
+
+        <div class="results-bar">
+            <div id="results-count" class="muted">Найдено: 0</div>
+            <div class="view-controls muted">Вид: <span id="view-mode">Сетка</span></div>
+        </div>
+
+        <div id="grid" class="gv-grid" aria-live="polite"></div>
+
+        <div class="pagination" id="pagination" aria-hidden="true"></div>
+    </section>
+</main>
+
+<!-- модальное окно -->
+<div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+        <button class="modal-close" id="modal-close">&times;</button>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+<template id="card-template">
+    <article class="game-card">
+        <div class="cover-wrap">
+            <img class="cover lazy" alt="" loading="lazy">
+            <div class="card-hover">
+                <button class="btn-details gv-btn small">Подробнее</button>
+                <button class="btn-fav icon-btn" title="В избранное">♡</button>
+            </div>
+        </div>
+        <div class="card-info">
+            <h3 class="title"></h3>
+            <div class="meta">
+                <span class="platforms muted"></span>
+                <span class="dot">•</span>
+                <span class="release muted"></span>
+            </div>
+            <div class="tags"></div>
+            <div class="price-row">
+                <span class="price"></span>
+                <span class="discount muted"></span>
+            </div>
+        </div>
+    </article>
+</template>
+
+<script src="app.js" defer></script>
 </body>
 </html>

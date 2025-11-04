@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>GameVault — Избранное</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="gv-topbar">
+    <div class="gv-left"><div class="gv-logo">GameVault</div></div>
+    <div class="gv-center"></div>
+    <div class="gv-right"><a href="catalog.html">Каталог</a></div>
+</header>
+
+<main class="container" style="grid-template-columns:260px 1fr;">
+    <aside class="gv-sidebar">
+        <section class="panel"><h4>Избранное</h4><p class="muted">Сохранено в localStorage</p></section>
+    </aside>
+
+    <section class="gv-content">
+        <section class="panel">
+            <h2>Избранные игры</h2>
+            <div id="fav-grid" class="gv-grid"></div>
+        </section>
+    </section>
+</main>
+
+<script>
+    (async ()=>{
+      const res = await fetch('js/games.json');
+      const games = await res.json();
+      const favs = JSON.parse(localStorage.getItem('gv_favs')||'[]');
+      const grid = document.getElementById('fav-grid');
+      if(!favs.length){ grid.innerHTML = '<p class="muted">Пока нет избранных игр.</p>'; return; }
+      favs.forEach(id=>{
+        const g = games.find(x=>x.id===id);
+        if(!g) return;
+        const div = document.createElement('div');
+        div.className = 'game-card';
+        div.innerHTML = `
+          <div class="cover-wrap"><img src="${g.cover}" class="cover" style="height:140px;object-fit:cover"></div>
+          <div class="card-info"><h3 class="title">${g.title}</h3><p class="muted">${g.release_date||''}</p>
+            <div style="margin-top:8px"><a class="gv-btn" href="game.html?id=${g.id}">Открыть</a></div>
+          </div>
+        `;
+        grid.appendChild(div);
+      });
+    })();
+</script>
+</body>
+</html>

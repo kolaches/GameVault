@@ -1,35 +1,67 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Game — GameVault</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>GameVault — Игра</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div class="app">
-    <header class="site-header">
-        <div class="logo"><a href="index.html">GameVault</a></div>
-        <nav class="nav">
-            <a href="catalog.html">Catalog</a>
-            <a href="news.html">News</a>
+<header class="gv-topbar">
+    <div class="gv-left">
+        <div class="gv-logo">GameVault</div>
+        <nav class="gv-nav">
+            <a href="catalog.html">Каталог</a>
+            <a href="index.html">Витрина</a>
         </nav>
-        <div class="header-right">
-            <a href="login.html" class="btn small">Sign in</a>
+    </div>
+    <div class="gv-center"></div>
+    <div class="gv-right">
+        <a href="favorites.html" class="fav-link">Избранное <span id="fav-count-2" class="fav-count">0</span></a>
+    </div>
+</header>
+
+<main class="container" style="grid-template-columns:1fr; gap:16px;">
+    <section class="panel" id="game-panel">
+        <div id="game-container">
+            <!-- JS подставит содержимое по ?id=gameid или через openDetails -->
+            <h2>Загрузка игры...</h2>
         </div>
-    </header>
+    </section>
+</main>
 
-    <main class="container">
-        <div id="gameArea"></div>
-    </main>
-
-    <footer class="site-footer">
-        <div>© <span id="year3"></span> GameVault</div>
-    </footer>
-</div>
-
-<script src="js/games.js"></script>
-<script src="js/main.js"></script>
+<script>
+    // Простейший рендер страницы игры по ?id=ID (если открыта отдельно)
+    (async ()=>{
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      const container = document.getElementById('game-container');
+      try{
+        const res = await fetch('js/games.json');
+        const list = await res.json();
+        const g = id ? list.find(x=>x.id===id) : list[0];
+        if(!g){ container.innerHTML = '<p>Игра не найдена</p>'; return; }
+        container.innerHTML = `
+          <div style="display:grid;grid-template-columns:320px 1fr;gap:16px;">
+            <img src="${g.cover}" alt="${g.title}" style="width:100%;border-radius:8px;object-fit:cover">
+            <div>
+              <h1>${g.title}</h1>
+              <p class="muted">${(g.genres||[]).join(', ')} • ${(g.platforms||[]).join(', ')}</p>
+              <p>${g.description || ''}</p>
+              <h4>Требования</h4>
+              <pre style="background:rgba(255,255,255,0.02);padding:8px;border-radius:6px">${g.sysreqs || 'Не указано'}</pre>
+              <div style="margin-top:12px">
+                ${(g.storeLinks ? Object.entries(g.storeLinks).map(([k,v])=>`<a class="gv-btn" href="${v}" target="_blank">${k}</a>`).join(' ') : '')}
+                <a class="gv-btn ghost" href="catalog.html">Назад в каталог</a>
+              </div>
+            </div>
+          </div>
+        `;
+      }catch(e){
+        container.innerHTML = '<p>Ошибка загрузки данных.</p>';
+        console.error(e);
+      }
+    })();
+</script>
 </body>
 </html>

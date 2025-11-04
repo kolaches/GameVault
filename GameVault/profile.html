@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+    <title>GameVault — Профиль</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<header class="gv-topbar">
+    <div class="gv-left"><div class="gv-logo">GameVault</div></div>
+    <div class="gv-center"></div>
+    <div class="gv-right"><a href="catalog.html">Каталог</a></div>
+</header>
+
+<main class="container" style="grid-template-columns:260px 1fr;">
+    <aside class="gv-sidebar">
+        <section class="panel">
+            <h4>Профиль</h4>
+            <div id="user-box" style="display:flex;flex-direction:column;gap:8px;">
+                <div id="user-avatar" style="width:100%;height:120px;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center;border-radius:6px;">Аватар</div>
+                <div id="user-name" class="muted">—</div>
+                <div id="user-email" class="muted">—</div>
+                <div style="margin-top:8px;">
+                    <button id="btn-logout" class="gv-btn ghost">Выйти</button>
+                </div>
+            </div>
+        </section>
+    </aside>
+
+    <section class="gv-content">
+        <section class="panel">
+            <h2>Информация аккаунта</h2>
+            <div id="account-info">
+                <p class="muted">Загрузка данных...</p>
+            </div>
+        </section>
+
+        <section class="panel">
+            <h3>Мои избранные</h3>
+            <div id="my-favs" class="gv-grid"></div>
+        </section>
+    </section>
+</main>
+
+<script>
+    async function loadProfile(){
+      const accountInfoEl = document.getElementById('account-info');
+      // Сначала пробуем серверный профиль
+      try{
+        const res = await fetch('/api/me', { credentials: 'include' });
+        if(res.ok){
+          const data = await res.json();
+          if(data.user){
+            const u = data.user;
+            document.getElementById('user-name').textContent = u.displayName || u.username || u.name || 'User';
+            document.getElementById('user-email').textContent = u.emails ? u.emails[0].value : (u._json && u._json.personaname) || '';
+            accountInfoEl.innerHTML = `<pre>${JSON.stringify(u, null, 2)}</pre>`;
+            return;
+          }
+        }
+      }catch(e){
+        // ignore — возможно backend не поднят
+        console.warn('Не удалось получить /api/me', e);
+      }
+
+      // fallback: локальный пользователь (demo)
+      const local = JSON.parse(localStorage.getItem('gv_user_local') || 'null');
+      if(local){
+        document.getElementById('user-name').textContent = local.name || local.displayName || 'User';
+        document.getElementById('user-email').textContent = local.email || '';
+        accountInfoEl.innerHTML = `<pre>${JSON.stringify(local, null, 2)}</pre>`;
+      } else {
+        accountInfoEl.innerHTML = '<p class="muted">Пользователь не найден. Пожалуйста, выполните вход или зарегистрируйтесь.</p><p><a class="gv-btn" href="login.html">Войти</a></p>';
+      }
+    }
+
+    function renderFavs(){
+      const favGrid = document.getElementById('my-favs');
+      favGrid.innerHTML = '';
+      const favs = JSON.parse(localStorage.getItem('gv_favs')||'[]');
+      if(!favs.length){ favGrid.innerHTML = '<p class="muted">Нет избранных.</p>'; return; }
+      fetch('js/games.json').then(r=>r.json()).then(games=>{
+        favs.forEach(id=>{
+          const g = games.find(x=>x.id===id);
+          if(!g) return;
+          const node = document.createElement('div');
+          node.className = 'game-card';
+          node.innerHTML = `<div class="cover-wrap"><img src="${g.cover}" class="cover" style="height:120px;object-fit:cover"></div>
+            <div class="card-info"><h3 class="title">${g.title}</h3><div style="margin-top:8px"><a class="gv-btn" href="game.html?id=${g.id}">Открыть</a></div></div>`;
+          favGrid.appendChild(node);
+        });
+      });
+    }
+
+    document.getElementById('btn-logout').addEventListener('click', async ()=>{
+      // попробуем вызвать серверный logout
+      try{
+        await fetch('/api/logout', { credentials: 'include' });
+      }catch(e){}
+      // очистим локальные данные
+      localStorage.removeItem('gv_user_local');
+      alert('Вы вышли.');
+      location.href = 'index.html';
+    });
+
+    (async ()=>{ await loadProfile(); renderFavs(); })();
+</script>
+</body>
+</html>

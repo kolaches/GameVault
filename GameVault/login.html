@@ -3,34 +3,70 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Sign in — GameVault</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <title>GameVault — Вход</title>
     <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-<div class="app">
-    <header class="site-header">
-        <div class="logo"><a href="index.html">GameVault</a></div>
-        <nav class="nav">
-            <a href="catalog.html">Catalog</a>
-        </nav>
-    </header>
+<header class="gv-topbar">
+    <div class="gv-left"><div class="gv-logo">GameVault</div></div>
+    <div class="gv-center"></div>
+    <div class="gv-right"><a href="register.html" class="gv-btn ghost">Регистрация</a></div>
+</header>
 
-    <main class="container auth">
-        <h1>Sign in</h1>
-        <form id="loginForm" class="auth-form">
-            <label>Email<input type="email" id="email" required></label>
-            <label>Password<input type="password" id="password" required></label>
-            <button class="btn" type="submit">Sign in</button>
+<main class="container" style="grid-template-columns:1fr; gap:18px;">
+    <section class="panel" style="max-width:720px;margin:0 auto;">
+        <h1>Вход</h1>
+        <p class="muted">Выберите способ входа. Для реального OAuth нужно поднять backend (см. server.js и README).</p>
+
+        <div style="display:flex;gap:12px;flex-wrap:wrap;margin:12px 0;">
+            <button id="steam-login" class="gv-btn">Войти через Steam</button>
+            <button id="discord-login" class="gv-btn">Войти через Discord</button>
+            <button id="demo-local" class="gv-btn ghost">Локальный демо‑вход</button>
+        </div>
+
+        <hr style="border:none;border-top:1px solid rgba(255,255,255,0.04);margin:12px 0;">
+
+        <h3>Войти по email (демо)</h3>
+        <form id="email-login" style="display:grid;gap:8px;">
+            <input id="email" type="email" placeholder="Email" required style="padding:10px;border-radius:6px;background:var(--panel);border:1px solid rgba(255,255,255,0.03);color:inherit">
+            <input id="password" type="password" placeholder="Пароль" required style="padding:10px;border-radius:6px;background:var(--panel);border:1px solid rgba(255,255,255,0.03);color:inherit">
+            <div style="display:flex;gap:8px;">
+                <button type="submit" class="gv-btn">Войти</button>
+                <a href="register.html" class="gv-btn ghost">Регистрация</a>
+            </div>
         </form>
-        <p class="muted">Demo only — no backend. Data saved in localStorage.</p>
-    </main>
 
-    <footer class="site-footer">
-        <div>© <span id="year5"></span> GameVault</div>
-    </footer>
-</div>
+        <p id="login-msg" class="muted" style="margin-top:10px;"></p>
+    </section>
+</main>
 
-<script src="js/main.js"></script>
+<script>
+    // Простая клиентская логика: перенаправление на backend OAuth или локальная демо‑авторизация
+    document.getElementById('steam-login').addEventListener('click', ()=>{
+      // ожидаем, что backend доступен по /auth/steam
+      location.href = '/auth/steam';
+    });
+    document.getElementById('discord-login').addEventListener('click', ()=>{
+      location.href = '/auth/discord';
+    });
+    document.getElementById('demo-local').addEventListener('click', ()=>{
+      // Создаём временного пользователя в localStorage
+      const demoUser = { id: 'local_demo', name: 'Demo User', email: 'demo@local', avatar: '' };
+      localStorage.setItem('gv_user_local', JSON.stringify(demoUser));
+      alert('Демо‑вход выполнен. Теперь вы можете открыть профиль.');
+      location.href = 'profile.html';
+    });
+
+    document.getElementById('email-login').addEventListener('submit', (e)=>{
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      const pass = document.getElementById('password').value;
+      // Демонстрация: сохраняем локального пользователя (не безопасно — только demo)
+      const user = { id: 'local_'+Date.now(), name: email.split('@')[0], email, avatar: '' };
+      localStorage.setItem('gv_user_local', JSON.stringify(user));
+      document.getElementById('login-msg').textContent = 'Демо‑вход выполнен. Перенаправление на профиль...';
+      setTimeout(()=>location.href='profile.html',700);
+    });
+</script>
 </body>
 </html>

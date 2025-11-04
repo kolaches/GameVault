@@ -1,7 +1,7 @@
 :root{
-  --bg:#0b1216;
+  --bg:#071018;
   --panel:#0f171b;
-  --accent:#66c0ff;      /* steam-blue */
+  --accent:#66c0ff;
   --accent-2:#00aaff;
   --muted:#9aa7b1;
   --glass: rgba(255,255,255,0.02);
@@ -16,7 +16,7 @@
 /* Reset */
 *{box-sizing:border-box}
 html,body{height:100%}
-body{margin:0;background:linear-gradient(180deg,#071018 0%, #05080b 100%); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
+body{margin:0;background:linear-gradient(180deg,#041018 0%, #02060a 100%); -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale}
 
 /* Topbar */
 .gv-topbar{
@@ -57,6 +57,7 @@ body{margin:0;background:linear-gradient(180deg,#071018 0%, #05080b 100%); -webk
 
 /* Grid */
 .gv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--grid-gap)}
+.gv-grid.list-view{grid-template-columns:1fr}
 
 /* Card (steam-like) */
 .game-card{background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);border-radius:var(--card-radius);overflow:hidden;border:1px solid rgba(255,255,255,0.03);box-shadow:var(--shadow);transition:transform .12s}
