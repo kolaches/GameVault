@@ -1,27 +1,9 @@
-# Improved "Deploy static site to GitHub Pages"
-# - Автоматически собирает проект если присутствует package.json (npm ci + npm run build --if-present)
-# - Кеширует зависимости через actions/setup-node (cache: npm)
-# - Позволяет переопределить директорию для публикации через workflow_dispatch input (publish_dir)
-# - Гибко работает и для простого статического сайта (публикует корень репо)
 name: Deploy static site to GitHub Pages
 
 on:
   push:
     branches: ["main"]
   workflow_dispatch:
-    inputs:
-      publish_dir:
-        description: 'Папка с собранным сайтом (например: dist, build, public). Если пусто — будет использовано "dist" при наличии package.json, иначе корень "."'
-        required: false
-        default: ''
-      build_command:
-        description: 'Команда сборки (по умолчанию: npm run build --if-present)'
-        required: false
-        default: ''
-      node_version:
-        description: 'Версия Node.js (используется, если есть package.json).'
-        required: false
-        default: '18'
 
 permissions:
   contents: read
@@ -41,80 +23,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-
-      - name: Detect package.json
-        id: detect
-        run: |
-          if [ -f package.json ]; then
-            echo "found=true" >> $GITHUB_OUTPUT
-          else
-            echo "found=false" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Determine publish directory
-        id: publish
-        env:
-          PUBLISH_DIR_INPUT: ${{ github.event.inputs.publish_dir }}
-        run: |
-          # если есть package.json — по умолчанию публикуем dist (или входной параметр)
-          if [ "${{ steps.detect.outputs.found }}" = "true" ]; then
-            if [ -n "$PUBLISH_DIR_INPUT" ]; then
-              echo "dir=$PUBLISH_DIR_INPUT" >> $GITHUB_OUTPUT
-            else
-              echo "dir=dist" >> $GITHUB_OUTPUT
-            fi
-          else
-            # для простых статических сайтов — публикуем корень репозитория
-            echo "dir=." >> $GITHUB_OUTPUT
-          fi
-
-      - name: Setup Node (if project uses Node)
-        if: steps.detect.outputs.found == 'true'
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ github.event.inputs.node_version || '18' }}
-          cache: 'npm'
-
-      - name: Install dependencies (if package.json exists)
-        if: steps.detect.outputs.found == 'true'
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci --no-audit --prefer-offline
-          else
-            npm install --no-audit --prefer-offline
-          fi
-
-      - name: Build project (if package.json exists)
-        if: steps.detect.outputs.found == 'true'
-        env:
-          BUILD_CMD_INPUT: ${{ github.event.inputs.build_command }}
-        run: |
-          # Если передали кастомную команду сборки через workflow_dispatch — используем её,
-          # иначе выполняем npm run build --if-present (не упадёт, если build-скрипта нет)
-          if [ -n "$BUILD_CMD_INPUT" ]; then
-            echo "Running custom build command: $BUILD_CMD_INPUT"
-            sh -c "$BUILD_CMD_INPUT"
-          else
-            echo "Running: npm run build --if-present"
-            npm run build --if-present
-          fi
-
-      - name: Verify publish directory exists
-        id: verify
-        run: |
-          PUBLISH_DIR="${{ steps.publish.outputs.dir }}"
-          echo "Publish dir set to: $PUBLISH_DIR"
-          if [ "$PUBLISH_DIR" = "." ]; then
-            echo "Publishing repository root."
-          else
-            if [ ! -e "$PUBLISH_DIR" ]; then
-              echo "ERROR: Publish directory '$PUBLISH_DIR' does not exist."
-              ls -la
-              exit 1
-            fi
-          fi
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -122,12 +30,8 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ${{ steps.publish.outputs.dir }}
+          path: .
 
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-
-      - name: Post-deploy: print page URL
-        if: success()
-        run: echo "Published to ${{ steps.deployment.outputs.page_url }}"
