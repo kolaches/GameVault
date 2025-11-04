@@ -1,226 +1,53 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>GameVault — Каталог игр</title>
-    <meta name="description" content="GameVault — современный игровой хаб. Просматривайте игры, читайте описания, смотрите системные требования и переходите на страницы в Steam/Epic.">
-    <style>
-        :root{
-          --bg:#0b0f14;
-          --card:#0f1720;
-          --muted:#9aa4b2;
-          --accent:#6ee7b7;
-          --glass: rgba(255,255,255,0.03);
-          --radius:12px;
-          --max-width:1100px;
-          --gap:18px;
-          font-family: Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
-        }
-        html,body{height:100%;}
-        body{
-          margin:0; background:linear-gradient(180deg,var(--bg),#07111a 120%); color:#e6eef6; -webkit-font-smoothing:antialiased;
-          display:flex; justify-content:center; padding:28px 16px; box-sizing:border-box;
-        }
-        .container{
-          width:100%; max-width:var(--max-width);
-        }
-        header{
-          display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px;
-        }
-        .brand{display:flex; gap:12px; align-items:center}
-        .logo{width:44px;height:44px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#4dd0e1);display:flex;align-items:center;justify-content:center;font-weight:700;color:#052;box-shadow:0 6px 18px rgba(0,0,0,0.5)}
-        h1{margin:0;font-size:20px}
-        p.lead{margin:0;color:var(--muted);font-size:13px}
-
-        /* ---- Controls ---- */
-        .controls{display:flex;flex-wrap:wrap;gap:12px;align-items:center}
-        .search{display:flex;align-items:center;background:var(--glass);padding:8px 10px;border-radius:10px;min-width:220px}
-        .search input{background:transparent;border:0;outline:none;color:inherit;font-size:14px;width:220px}
-        .select, .btn{background:var(--card);border:1px solid rgba(255,255,255,0.03);padding:8px 10px;border-radius:10px;color:inherit}
-        .select select{background:transparent;border:0;color:inherit;outline:none}
-        .btn{cursor:pointer}
-
-        /* ---- Grid ---- */
-        .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:var(--gap);margin-top:18px}
-        .card{background:linear-gradient(180deg,rgba(255,255,255,0.02),transparent);padding:12px;border-radius:12px;border:1px solid rgba(255,255,255,0.03);display:flex;flex-direction:column;gap:10px}
-        .thumb{width:100%;height:120px;border-radius:8px;object-fit:cover;background:#07121a}
-        .title{font-weight:600;margin:0;font-size:15px}
-        .meta{font-size:13px;color:var(--muted);display:flex;justify-content:space-between;align-items:center}
-        .platforms{display:flex;gap:6px}
-        .platform{font-size:11px;padding:4px 6px;border-radius:6px;background:rgba(255,255,255,0.02)}
-        .rating{font-weight:700;color:var(--accent)}
-        .desc{font-size:13px;color:var(--muted);line-height:1.2}
-
-        .card-footer{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
-        .link{flex:1;text-decoration:none;padding:8px;border-radius:8px;background:rgba(255,255,255,0.03);text-align:center;font-size:13px}
-
-        footer{margin-top:26px;color:var(--muted);font-size:13px;text-align:center}
-
-        @media (max-width:560px){
-          .search input{width:120px}
-          .thumb{height:140px}
-        }
-    </style>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GameVault — Каталог</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
 </head>
 <body>
-<main class="container" id="main">
-    <header>
-        <div class="brand">
-            <div class="logo" aria-hidden>GV</div>
-            <div>
-                <h1>GameVault — Каталог</h1>
-                <p class="lead">Современный игровой хаб — тёмная тема, рейтинги и ссылки на магазины.</p>
-            </div>
-        </div>
+<header class="topbar neon">
+    <div class="logo">GameVault</div>
+    <nav class="nav">
+        <a href="#/catalog" data-route>Каталог</a>
+        <a href="#/news" data-route>Новости</a>
+        <a href="#/contacts" data-route>Контакты</a>
+        <a href="#/favorites" data-route>Избранное <span id="fav-count" class="badge">0</span></a>
+    </nav>
+    <div class="actions">
+        <input id="search" class="search" placeholder="Поиск игр, жанров..." />
+        <button id="btn-login" class="btn neon-small">Войти (Discord)</button>
+    </div>
+</header>
 
-        <div class="controls" role="region" aria-label="Фильтры и поиск">
-            <div class="search" aria-hidden="false">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden><path d="M10 18a8 8 0 1 1 0-16 8 8 0 0 1 0 16z" stroke="currentColor" stroke-width="1.2"></path><path d="M21 21l-4.35-4.35" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"></path></svg>
-                <input id="q" type="search" placeholder="Поиск игр..." aria-label="Поиск игр">
-            </div>
-            <div class="select">
-                <label for="platform" class="sr-only">Платформа</label>
-                <select id="platform" aria-label="Фильтр по платформе">
-                    <option value="all">Все платформы</option>
-                    <option value="pc">PC</option>
-                    <option value="console">Console</option>
-                </select>
-            </div>
-            <div class="select">
-                <label for="sort" class="sr-only">Сортировка</label>
-                <select id="sort" aria-label="Сортировка">
-                    <option value="popular">Популярные</option>
-                    <option value="newest">Новинки</option>
-                    <option value="alpha">A→Z</option>
-                </select>
-            </div>
-            <button id="reset" class="btn" title="Сбросить фильтры">Сброс</button>
-        </div>
-    </header>
-
-    <section aria-live="polite" id="catalog">
-        <div id="grid" class="grid" role="list" aria-label="Список игр">
-            <!-- Карточки будут рендериться сюда через JS -->
-        </div>
-    </section>
-
-    <footer>
-        <div>© GameVault — Все права защищены</div>
-    </footer>
+<main id="app" class="container">
+    <!-- Views рендерятся JS -->
 </main>
 
-<script>
+<!-- Модальное окно с описанием игры -->
+<div id="modal" class="modal" aria-hidden="true">
+    <div class="modal-content neon">
+        <button class="modal-close" id="modal-close">&times;</button>
+        <div id="modal-body"></div>
+    </div>
+</div>
 
-    const sampleGames = [
-      {id:1,title:'CyberSaga: Neon Rush',platform:'pc',desc:'Киберпанковский экшен с открытым миром. Высокие системные требования.',rating:8.6,img:'https://picsum.photos/id/1015/600/400',store:{steam:'#',epic:'#'}},
-      {id:2,title:'Forest of Whispers',platform:'console',desc:'Атмосферная приключенческая игра с элементами головоломок.',rating:9.1,img:'https://picsum.photos/id/1011/600/400',store:{steam:'#'}},
-      {id:3,title:'Rally Rally',platform:'pc',desc:'Гоночный симулятор для фанатов скорости и дрифта.',rating:7.9,img:'https://picsum.photos/id/1012/600/400',store:{epic:'#'}},
-      {id:4,title:'Pixel Kingdom',platform:'pc',desc:'Ностальгическая пиксельная RPG с увлекательной историей.',rating:8.0,img:'https://picsum.photos/id/1025/600/400',store:{steam:'#',epic:'#'}}
-    ];
-
-    // State
-    let games = sampleGames.slice();
-
-    const grid = document.getElementById('grid');
-    const qInput = document.getElementById('q');
-    const platformSelect = document.getElementById('platform');
-    const sortSelect = document.getElementById('sort');
-    const resetBtn = document.getElementById('reset');
-
-    function safeText(text){
-      return String(text);
-    }
-
-    function buildCard(game){
-      const item = document.createElement('article');
-      item.className = 'card';
-      item.setAttribute('role','listitem');
-      item.innerHTML = `
-        <img class="thumb" loading="lazy" alt="${escapeHtml(game.title)} screenshot" src="${escapeHtml(game.img)}">
-        <div>
-          <h3 class="title">${escapeHtml(game.title)}</h3>
-          <div class="meta">
-            <div class="platforms"><span class="platform">${escapeHtml(capitalize(game.platform))}</span></div>
-            <div class="rating">${escapeHtml(game.rating)}</div>
-          </div>
-          <p class="desc">${escapeHtml(game.desc)}</p>
+<template id="card-template">
+    <article class="card neon">
+        <img class="card-cover" alt="">
+        <div class="card-body">
+            <h3 class="card-title"></h3>
+            <p class="card-meta"></p>
+            <div class="card-actions">
+                <button class="btn btn-primary btn-details">Описание</button>
+                <button class="btn btn-fav">❤</button>
+            </div>
         </div>
-        <div class="card-footer">
-          <a class="link" href="${escapeHtml(game.store.steam || '#')}" target="_blank" rel="noopener noreferrer">Steam</a>
-          <a class="link" href="${escapeHtml(game.store.epic || '#')}" target="_blank" rel="noopener noreferrer">Epic</a>
-        </div>
-      `;
-      return item;
-    }
+    </article>
+</template>
 
-    // minimal escaping for attributes/text (we use for img src and text)
-    function escapeHtml(s){
-      return String(s)
-        .replace(/&/g,'&amp;')
-        .replace(/</g,'&lt;')
-        .replace(/>/g,'&gt;')
-        .replace(/"/g,'&quot;')
-        .replace(/'/g,'&#39;');
-    }
-
-    function capitalize(s){ return s && s[0].toUpperCase() + s.slice(1);}
-
-    function render(list){
-      grid.innerHTML = '';
-      if(list.length === 0){
-        grid.innerHTML = '<div style="color:var(--muted);padding:20px">Ничего не найдено.</div>';
-        return;
-      }
-      const frag = document.createDocumentFragment();
-      list.forEach(g => frag.appendChild(buildCard(g)));
-      grid.appendChild(frag);
-    }
-
-    function applyFilters(){
-      const q = qInput.value.trim().toLowerCase();
-      const platform = platformSelect.value;
-      let res = games.filter(g => {
-        if(platform !== 'all' && g.platform !== platform) return false;
-        if(q){
-          return (g.title.toLowerCase().includes(q) || g.desc.toLowerCase().includes(q));
-        }
-        return true;
-      });
-
-      const sort = sortSelect.value;
-      if(sort === 'popular') res.sort((a,b)=> b.rating - a.rating);
-      else if(sort === 'newest') res.sort((a,b)=> b.id - a.id); // assuming id ascending = older
-      else if(sort === 'alpha') res.sort((a,b)=> a.title.localeCompare(b.title));
-
-      render(res);
-    }
-
-    // Keyboard accessibility: Enter in search triggers filter
-    qInput.addEventListener('input', debounce(applyFilters, 220));
-    platformSelect.addEventListener('change', applyFilters);
-    sortSelect.addEventListener('change', applyFilters);
-    resetBtn.addEventListener('click', ()=>{ qInput.value=''; platformSelect.value='all'; sortSelect.value='popular'; applyFilters(); });
-
-    // Simple debounce
-    function debounce(fn, ms){ let t; return (...args)=>{ clearTimeout(t); t=setTimeout(()=>fn(...args), ms); }}
-
-    // Initial render
-    document.addEventListener('DOMContentLoaded', ()=>{
-      // If you later want to load from API, replace below with fetch
-      // fetch('/api/games').then(r=>r.json()).then(data=>{games=data;applyFilters();})
-      applyFilters();
-    });
-
-    // small safety: if images fail to load, show placeholder background
-    window.addEventListener('error', (e)=>{
-      const target = e.target;
-      if(target && target.tagName === 'IMG'){
-        target.style.objectFit = 'cover';
-        target.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400"><rect width="100%" height="100%" fill="%23081216"/><text x="50%" y="50%" font-size="20" fill="%23ccc" dominant-baseline="middle" text-anchor="middle">image unavailable</text></svg>';
-      }
-    }, true);
-
-</script>
+<script src="app.js" defer></script>
 </body>
 </html>

@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GameVault — Auth</title>
+    <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+<main class="container">
+    <h2>Авторизация</h2>
+    <p>Если вы пришли с Discord OAuth, проверьте токен ниже (demo & unsafe — для production нужен сервер)</p>
+    <pre id="info"></pre>
+    <p><a href="#/catalog" onclick="history.back();">Назад</a></p>
+</main>
+<script>
+    // Обрабатываем фрагмент URL после response_type=token
+    const info = document.getElementById('info');
+    const hash = location.hash.substring(1);
+    if(hash){
+      const params = new URLSearchParams(hash);
+      const access_token = params.get('access_token');
+      const token_type = params.get('token_type');
+      const expires_in = params.get('expires_in');
+      info.textContent = JSON.stringify({access_token, token_type, expires_in}, null, 2);
+      // Здесь вы можете вызвать Discord API /users/@me с токеном, но это безопаснее делать на сервере.
+    } else {
+      info.textContent = 'Токен не найден. Если вы используете кодовый поток (response_type=code), то нужен сервер для обмена кода на токен.';
+    }
+</script>
+</body>
+</html>

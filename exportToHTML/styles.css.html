@@ -1,0 +1,278 @@
+<html>
+<head>
+<title>styles.css</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #7a7e85;}
+.s1 { color: #bcbec4;}
+.s2 { color: #6aab73;}
+.s3 { color: #2aacb8;}
+</style>
+</head>
+<body bgcolor="#1e1f22">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+styles.css</font>
+</center></td></tr></table>
+<pre><span class="s0">/* -------------------- 
+   GAMEVAULT MAIN STYLE 
+   Dark + Neon UI 
+--------------------- */</span>
+
+<span class="s1">@import url(</span><span class="s2">'https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&amp;display=swap'</span><span class="s1">);</span>
+
+<span class="s1">:root {</span>
+    <span class="s1">--bg: #</span><span class="s3">0</span><span class="s1">d0f17;</span>
+    <span class="s1">--bg-light: #</span><span class="s3">141624</span><span class="s1">;</span>
+    <span class="s1">--bg-dark: #</span><span class="s3">08090</span><span class="s1">f;</span>
+
+    <span class="s1">--text: #e8e8e8;</span>
+    <span class="s1">--text-dim: #</span><span class="s3">9</span><span class="s1">fa4b8;</span>
+
+    <span class="s1">--neon-blue: #</span><span class="s3">0</span><span class="s1">affff;</span>
+    <span class="s1">--neon-purple: #b700ff;</span>
+    <span class="s1">--accent: #</span><span class="s3">5</span><span class="s1">b2cff;</span>
+    <span class="s1">--accent-hover: #</span><span class="s3">6</span><span class="s1">e3aff;</span>
+
+    <span class="s1">--card-bg: #</span><span class="s3">111320</span><span class="s1">;</span>
+    <span class="s1">--border: rgba(</span><span class="s3">255</span><span class="s1">, </span><span class="s3">255</span><span class="s1">, </span><span class="s3">255</span><span class="s1">, </span><span class="s3">0.08</span><span class="s1">);</span>
+
+    <span class="s1">--radius: </span><span class="s3">12</span><span class="s1">px;</span>
+<span class="s1">}</span>
+
+<span class="s0">/* Light Theme */</span>
+<span class="s1">body.light-theme {</span>
+    <span class="s1">--bg: #f5f7fc;</span>
+    <span class="s1">--bg-light: #ffffff;</span>
+    <span class="s1">--text: #</span><span class="s3">1</span><span class="s1">a1a1a;</span>
+    <span class="s1">--text-dim: #</span><span class="s3">585858</span><span class="s1">;</span>
+    <span class="s1">--card-bg: #ffffff;</span>
+<span class="s1">}</span>
+
+<span class="s0">/* Global Reset */</span>
+<span class="s1">* {</span>
+    <span class="s1">margin: </span><span class="s3">0</span><span class="s1">;</span>
+    <span class="s1">padding: </span><span class="s3">0</span><span class="s1">;</span>
+    <span class="s1">box-sizing: border-box;</span>
+    <span class="s1">scroll-behavior: smooth;</span>
+<span class="s1">}</span>
+
+<span class="s1">body {</span>
+    <span class="s1">font-family: </span><span class="s2">&quot;Montserrat&quot;</span><span class="s1">, sans-serif;</span>
+    <span class="s1">background: var(--bg);</span>
+    <span class="s1">color: var(--text);</span>
+    <span class="s1">overflow-x: hidden;</span>
+<span class="s1">}</span>
+
+<span class="s1">img {</span>
+    <span class="s1">max-width: </span><span class="s3">100</span><span class="s1">%;</span>
+    <span class="s1">display: block;</span>
+<span class="s1">}</span>
+
+<span class="s1">a {</span>
+    <span class="s1">text-decoration: none;</span>
+    <span class="s1">color: inherit;</span>
+<span class="s1">}</span>
+
+<span class="s0">/* Scrollbar */</span>
+<span class="s1">::-webkit-scrollbar {</span>
+    <span class="s1">width: </span><span class="s3">8</span><span class="s1">px;</span>
+<span class="s1">}</span>
+<span class="s1">::-webkit-scrollbar-thumb {</span>
+    <span class="s1">background: var(--accent);</span>
+    <span class="s1">border-radius: </span><span class="s3">15</span><span class="s1">px;</span>
+<span class="s1">}</span>
+
+<span class="s0">/* Containers */</span>
+<span class="s1">.container {</span>
+    <span class="s1">width: </span><span class="s3">88</span><span class="s1">%;</span>
+    <span class="s1">margin: auto;</span>
+<span class="s1">}</span>
+
+<span class="s0">/* -------------------- 
+   HEADER 
+--------------------- */</span>
+
+<span class="s1">.site-header {</span>
+    <span class="s1">width: </span><span class="s3">100</span><span class="s1">%;</span>
+    <span class="s1">padding: </span><span class="s3">14</span><span class="s1">px </span><span class="s3">5</span><span class="s1">%;</span>
+    <span class="s1">display: flex;</span>
+    <span class="s1">justify-content: space-between;</span>
+    <span class="s1">align-items: center;</span>
+    <span class="s1">background: rgba(</span><span class="s3">10</span><span class="s1">, </span><span class="s3">12</span><span class="s1">, </span><span class="s3">23</span><span class="s1">, </span><span class="s3">0.7</span><span class="s1">);</span>
+    <span class="s1">backdrop-filter: blur(</span><span class="s3">12</span><span class="s1">px);</span>
+    <span class="s1">border-bottom: </span><span class="s3">1</span><span class="s1">px solid var(--border);</span>
+    <span class="s1">position: sticky;</span>
+    <span class="s1">top: </span><span class="s3">0</span><span class="s1">;</span>
+    <span class="s1">z-index: </span><span class="s3">100</span><span class="s1">;</span>
+<span class="s1">}</span>
+
+<span class="s1">.logo {</span>
+    <span class="s1">display: flex;</span>
+    <span class="s1">align-items: center;</span>
+    <span class="s1">gap: </span><span class="s3">10</span><span class="s1">px;</span>
+    <span class="s1">font-size: </span><span class="s3">22</span><span class="s1">px;</span>
+    <span class="s1">font-weight: </span><span class="s3">700</span><span class="s1">;</span>
+    <span class="s1">color: var(--neon-blue);</span>
+<span class="s1">}</span>
+
+<span class="s1">.logo-icon {</span>
+    <span class="s1">width: </span><span class="s3">32</span><span class="s1">px;</span>
+    <span class="s1">filter: drop-shadow(</span><span class="s3">0 0 6</span><span class="s1">px var(--neon-blue));</span>
+<span class="s1">}</span>
+
+<span class="s1">.nav {</span>
+    <span class="s1">display: flex;</span>
+    <span class="s1">gap: </span><span class="s3">24</span><span class="s1">px;</span>
+<span class="s1">}</span>
+
+<span class="s1">.nav a {</span>
+    <span class="s1">color: var(--text-dim);</span>
+    <span class="s1">font-weight: </span><span class="s3">500</span><span class="s1">;</span>
+    <span class="s1">transition: .</span><span class="s3">25</span><span class="s1">s;</span>
+<span class="s1">}</span>
+
+<span class="s1">.nav a:hover {</span>
+    <span class="s1">color: var(--neon-blue);</span>
+    <span class="s1">text-shadow: </span><span class="s3">0 0 8</span><span class="s1">px var(--neon-blue);</span>
+<span class="s1">}</span>
+
+<span class="s1">.header-right {</span>
+    <span class="s1">display: flex;</span>
+    <span class="s1">align-items: center;</span>
+    <span class="s1">gap: </span><span class="s3">14</span><span class="s1">px;</span>
+<span class="s1">}</span>
+
+<span class="s0">/* Buttons */</span>
+<span class="s1">.btn {</span>
+    <span class="s1">background: var(--accent);</span>
+    <span class="s1">padding: </span><span class="s3">8</span><span class="s1">px </span><span class="s3">18</span><span class="s1">px;</span>
+    <span class="s1">border-radius: var(--radius);</span>
+    <span class="s1">font-weight: </span><span class="s3">600</span><span class="s1">;</span>
+    <span class="s1">transition: .</span><span class="s3">25</span><span class="s1">s;</span>
+<span class="s1">}</span>
+
+<span class="s1">.btn:hover {</span>
+    <span class="s1">background: var(--accent-hover);</span>
+    <span class="s1">box-shadow: </span><span class="s3">0 0 10</span><span class="s1">px var(--accent-hover);</span>
+<span class="s1">}</span>
+
+<span class="s1">.btn.small {</span>
+    <span class="s1">padding: </span><span class="s3">6</span><span class="s1">px </span><span class="s3">14</span><span class="s1">px;</span>
+    <span class="s1">font-size: </span><span class="s3">14</span><span class="s1">px;</span>
+<span class="s1">}</span>
+
+<span class="s1">.btn.big {</span>
+    <span class="s1">padding: </span><span class="s3">12</span><span class="s1">px </span><span class="s3">28</span><span class="s1">px;</span>
+    <span class="s1">font-size: </span><span class="s3">18</span><span class="s1">px;</span>
+<span class="s1">}</span>
+
+<span class="s0">/* -------------------- 
+   HERO SECTION 
+--------------------- */</span>
+
+<span class="s1">.hero {</span>
+    <span class="s1">display: flex;</span>
+    <span class="s1">justify-content: space-between;</span>
+    <span class="s1">align-items: center;</span>
+    <span class="s1">margin-top: </span><span class="s3">70</span><span class="s1">px;</span>
+    <span class="s1">gap: </span><span class="s3">40</span><span class="s1">px;</span>
+<span class="s1">}</span>
+
+<span class="s1">.hero-left {</span>
+    <span class="s1">max-width: </span><span class="s3">520</span><span class="s1">px;</span>
+<span class="s1">}</span>
+
+<span class="s1">.hero h1 {</span>
+    <span class="s1">font-size: </span><span class="s3">40</span><span class="s1">px;</span>
+    <span class="s1">font-weight: </span><span class="s3">700</span><span class="s1">;</span>
+    <span class="s1">line-height: </span><span class="s3">1.2</span><span class="s1">;</span>
+    <span class="s1">margin-bottom: </span><span class="s3">14</span><span class="s1">px;</span>
+<span class="s1">}</span>
+
+<span class="s1">.subtitle {</span>
+    <span class="s1">font-size: </span><span class="s3">16</span><span class="s1">px;</span>
+    <span class="s1">color: var(--text-dim);</span>
+    <span class="s1">margin-bottom: </span><span class="s3">22</span><span class="s1">px;</span>
+<span class="s1">}</span>
+
+<span class="s1">.hero-cover {</span>
+    <span class="s1">width: </span><span class="s3">460</span><span class="s1">px;</span>
+    <span class="s1">border-radius: var(--radius);</span>
+    <span class="s1">box-shadow: </span><span class="s3">0 0 18</span><span class="s1">px var(--accent);</span>
+<span class="s1">}</span>
+
+<span class="s0">/* -------------------- 
+   GAME CARDS 
+--------------------- */</span>
+
+<span class="s1">.trending h2 {</span>
+    <span class="s1">margin: </span><span class="s3">40</span><span class="s1">px </span><span class="s3">0 20</span><span class="s1">px;</span>
+    <span class="s1">font-size: </span><span class="s3">28</span><span class="s1">px;</span>
+    <span class="s1">font-weight: </span><span class="s3">600</span><span class="s1">;</span>
+<span class="s1">}</span>
+
+<span class="s1">.cards {</span>
+    <span class="s1">display: grid;</span>
+    <span class="s1">grid-template-columns: repeat(auto-fill, minmax(</span><span class="s3">240</span><span class="s1">px, </span><span class="s3">1</span><span class="s1">fr));</span>
+    <span class="s1">gap: </span><span class="s3">22</span><span class="s1">px;</span>
+<span class="s1">}</span>
+
+<span class="s1">.card {</span>
+    <span class="s1">background: var(--card-bg);</span>
+    <span class="s1">border: </span><span class="s3">1</span><span class="s1">px solid var(--border);</span>
+    <span class="s1">padding: </span><span class="s3">14</span><span class="s1">px;</span>
+    <span class="s1">border-radius: var(--radius);</span>
+    <span class="s1">transition: .</span><span class="s3">25</span><span class="s1">s;</span>
+    <span class="s1">cursor: pointer;</span>
+<span class="s1">}</span>
+
+<span class="s1">.card:hover {</span>
+    <span class="s1">transform: translateY(-</span><span class="s3">6</span><span class="s1">px);</span>
+    <span class="s1">box-shadow: </span><span class="s3">0 0 10</span><span class="s1">px var(--accent);</span>
+    <span class="s1">border-color: var(--accent);</span>
+<span class="s1">}</span>
+
+<span class="s1">.card img {</span>
+    <span class="s1">border-radius: var(--radius);</span>
+    <span class="s1">margin-bottom: </span><span class="s3">10</span><span class="s1">px;</span>
+<span class="s1">}</span>
+
+<span class="s1">.card-title {</span>
+    <span class="s1">font-size: </span><span class="s3">17</span><span class="s1">px;</span>
+    <span class="s1">font-weight: </span><span class="s3">600</span><span class="s1">;</span>
+    <span class="s1">margin-bottom: </span><span class="s3">6</span><span class="s1">px;</span>
+<span class="s1">}</span>
+
+<span class="s1">.card-genre {</span>
+    <span class="s1">font-size: </span><span class="s3">13</span><span class="s1">px;</span>
+    <span class="s1">color: var(--text-dim);</span>
+<span class="s1">}</span>
+
+<span class="s0">/* -------------------- 
+   FOOTER 
+--------------------- */</span>
+
+<span class="s1">.site-footer {</span>
+    <span class="s1">margin-top: </span><span class="s3">70</span><span class="s1">px;</span>
+    <span class="s1">padding: </span><span class="s3">18</span><span class="s1">px </span><span class="s3">0</span><span class="s1">;</span>
+    <span class="s1">text-align: center;</span>
+    <span class="s1">font-size: </span><span class="s3">14</span><span class="s1">px;</span>
+    <span class="s1">color: var(--text-dim);</span>
+    <span class="s1">border-top: </span><span class="s3">1</span><span class="s1">px solid var(--border);</span>
+<span class="s1">}</span>
+
+<span class="s0">/* RESPONSIVE */</span>
+<span class="s1">@media (max-width: </span><span class="s3">850</span><span class="s1">px) {</span>
+    <span class="s1">.hero {</span>
+        <span class="s1">flex-direction: column;</span>
+        <span class="s1">text-align: center;</span>
+    <span class="s1">}</span>
+    <span class="s1">.hero-cover {</span>
+        <span class="s1">width: </span><span class="s3">90</span><span class="s1">%;</span>
+    <span class="s1">}</span>
+<span class="s1">}</span>
+</pre>
+</body>
+</html>

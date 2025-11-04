@@ -1,50 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>GameVault — Home</title>
-    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css" />
+    <script defer src="assets/js/ui.js"></script>
 </head>
 <body>
-
-<!-- HEADER -->
 <header class="site-header">
-    <div class="logo"><a href="index.html">GameVault</a></div>
+    <div class="logo">
+        <img src="assets/img/logo.svg" alt="logo" class="logo-icon">
+        <a href="index.html">GameVault</a>
+    </div>
 
     <nav class="nav">
-        <a href="index.html" class="active">Home</a>
-        <a href="catalog.html">Catalog</a>
-        <a href="news.html">News</a>
-        <a href="contacts.html">Contacts</a>
-        <a href="about.html">About</a>
+        <a href="catalog.html" data-lang="nav_catalog">Catalog</a>
+        <a href="news.html" data-lang="nav_news">News</a>
+        <a href="about.html" data-lang="nav_about">About</a>
+        <a href="contacts.html" data-lang="nav_contacts">Contacts</a>
     </nav>
 
     <div class="header-right">
-        <button class="theme-toggle" id="themeToggle">
-            <div class="circle"></div>
-        </button>
+        <button id="langSwitch" class="btn small">EN</button>
+        <a href="login.html" class="btn small" id="loginBtn" data-lang="nav_login">Login</a>
     </div>
 </header>
 
-<!-- MAIN CONTENT -->
-<div class="container">
-    <section class="hero">
-        <div class="hero-left">
-            <h1>Discover Your Next Favorite Game</h1>
-            <p class="subtitle">Explore ratings, reviews, system requirements, trailers and more — all in one place.</p>
-        </div>
-        <img src="assets/img/featured.jpg" class="hero-cover" alt="Featured Game">
-    </section>
+<section class="hero container">
+    <div class="hero-left">
+        <h1 data-lang="hero_title">Discover, explore, and track your favorite games</h1>
+        <p class="subtitle" data-lang="hero_sub">
+            GameVault is a modern gaming hub designed for players who want fast and convenient access to game information.
+        </p>
+        <a href="catalog.html" class="btn big" data-lang="hero_btn">Open Catalog</a>
+    </div>
+    <img src="assets/img/featured.jpg" alt="Featured" class="hero-cover">
+</section>
 
-    <h2>🔥 Popular Games</h2>
-    <div class="cards" id="popularGames"></div>
-</div>
+<section class="container trending">
+    <h2 data-lang="trending_title">🔥 Trending Games</h2>
+    <div class="cards" id="trendingGames">
+        <!-- игры будут добавляться через JS -->
+    </div>
+</section>
 
 <footer class="site-footer">
     <p>© 2025 GameVault. All rights reserved.</p>
 </footer>
-
-<script src="assets/js/main.js"></script>
 </body>
 </html>
