@@ -3,82 +3,55 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>GameVault — Игровой каталог</title>
-    <meta name="description" content="GameVault — современный игровой хаб: каталог, избранное, страницы игр и ссылки на магазины." />
+    <title>GameVault — Каталог игр</title>
+    <meta name="description" content="GameVault — современный игровой хаб" />
 
-    <!-- Google font (Inter) — можно оставить или убрать -->
+    <!-- Шрифты -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
 
-    <!-- Основной стиль (замени файл на предложенный styles.css) -->
-    <link rel="stylesheet" href="css/styles.css">
+    <!-- Подключаем Steam-like стили (относительный путь) -->
+    <link rel="stylesheet" href="GameVault/css/styles.css">
 
-    <!-- Favicon (опционально) -->
-    <link rel="icon" href="assets/img/favicon.png" type="image/png" />
+    <link rel="icon" href="GameVault/assets/img/favicon.png" type="image/png" />
 </head>
 <body>
-<!-- Header -->
 <header class="gv-header" role="banner">
-    <div style="display:flex;align-items:center;gap:12px">
-        <button id="mobile-menu-toggle" aria-label="Открыть меню" style="display:none">☰</button>
-        <a href="#/" class="logo" aria-label="Перейти на главную">GameVault</a>
+    <div class="gv-header-left">
+        <a class="logo" href="#/">GameVault</a>
+        <nav class="gv-nav" aria-label="Главная навигация">
+            <a href="#/" class="nav-link">МАГАЗИН</a>
+            <a href="#/catalog" class="nav-link">КАТАЛОГ</a>
+            <a href="#/favorites" class="nav-link">ИЗБРАННОЕ</a>
+            <a href="#/news" class="nav-link">НОВОСТИ</a>
+        </nav>
     </div>
 
-    <nav class="gv-nav" role="navigation" aria-label="Основная навигация">
-        <a href="#/" class="nav-link">Главная</a>
-        <a href="#/catalog" class="nav-link">Каталог</a>
-        <a href="#/favorites" class="nav-link">Избранное</a>
-        <a href="#/news" class="nav-link">Новости</a>
-        <a href="#/profile" class="nav-link">Профиль</a>
-    </nav>
-
-    <div class="header-actions" role="search" aria-label="Поиск по играм">
-        <input id="gv-search" placeholder="Поиск игр..." aria-label="Поиск игр" />
+    <div class="gv-header-right">
+        <div class="search-wrap">
+            <input id="gv-search" placeholder="Поиск игр..." aria-label="Поиск игр" />
+        </div>
+        <div class="header-actions">
+            <button id="btn-profile" class="btn small ghost">Войти</button>
+        </div>
     </div>
 </header>
 
-<!-- Основной контейнер приложения: сюда рендерит app.js -->
 <main id="app" class="gv-app" role="main" aria-live="polite">
-    <!-- Контент подгрузится динамически через js/app.js -->
     <div class="page-title">
         <h2>Загрузка…</h2>
-        <div class="small-muted">Подождите, загружаем данные</div>
+        <div class="small-muted">Подождите, загружаем каталог</div>
     </div>
 </main>
 
-<!-- Footer -->
-<footer style="padding:20px 36px; color:var(--muted); border-top:1px solid rgba(255,255,255,0.02);">
-    <div style="max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap;">
-        <div>© <strong>GameVault</strong> — Все права не защищены 😉</div>
-        <div class="small-muted">Версия: 1.0 · Стиль: тёмный неон</div>
-    </div>
+<footer class="gv-footer">
+    <div>© GameVault — Demo UI · Version 1.2</div>
+    <div class="small-muted">Инспирировано Steam — стиль AAA</div>
 </footer>
 
-<!-- Если JS отключен -->
 <noscript>
-    <div style="padding:16px; background:#111; color:#f1f1f1; text-align:center;">
-        Для корректной работы сайта требуется включённый JavaScript.
-    </div>
+    <div class="noscript">Включите JavaScript для корректной работы приложения.</div>
 </noscript>
 
-<!-- Подключаем клиентский SPA-скрипт (замени/проверь путь) -->
-<script src="js/app.js" defer></script>
-
-<!-- Небольшой enhancement: быстрая навигация по Enter в search -->
-<script>
-    (function(){
-      const search = document.getElementById('gv-search');
-      if (!search) return;
-      search.addEventListener('keydown', (e) => {
-        if (e.key === 'Enter') {
-          const q = (search.value || '').trim();
-          // переходим в каталог и передаём параметр как часть хеша
-          // (app.js можно расширить, чтобы читать query)
-          location.hash = '#/catalog';
-          // можно запомнить запрос в sessionStorage — app.js может его поднять и применить
-          sessionStorage.setItem('gv_search_query', q);
-        }
-      });
-    })();
-</script>
+<script src="GameVault/js/app.js" defer></script>
 </body>
 </html>
