@@ -369,4 +369,21 @@
     router();
   });
 
+  fetch('js/games.json')
+    .then(r=>r.json())
+    .then(data=>{
+      const list=document.getElementById('games-list');
+      list.innerHTML='';
+      data.forEach(g=>{
+        const div=document.createElement('div');
+        div.className='game-item';
+        div.textContent = g.title + ' — ' + g.price;
+        list.appendChild(div);
+      });
+    })
+    .catch(()=>{
+      document.getElementById('games-list').textContent='Ошибка загрузки списка игр';
+    });
+
+
 })();
