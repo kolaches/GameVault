@@ -8,41 +8,116 @@
     <link rel="icon" href="data:;base64,iVBORw0KGgo=" />
 </head>
 <body>
-<header class="topbar neon">
-    <div class="logo">GameVault</div>
-    <nav class="nav">
-        <a href="#/catalog" data-route>Каталог</a>
-        <a href="#/news" data-route>Новости</a>
-        <a href="#/contacts" data-route>Контакты</a>
-        <a href="#/favorites" data-route>Избранное <span id="fav-count" class="badge">0</span></a>
-    </nav>
-    <div class="actions">
-        <input id="search" class="search" placeholder="Поиск игр, жанров..." />
-        <button id="btn-login" class="btn neon-small">Войти (Discord)</button>
+<header class="gv-topbar">
+    <div class="gv-left">
+        <div class="gv-logo">GameVault</div>
+        <nav class="gv-nav">
+            <a href="#/catalog" data-route class="active">Каталог</a>
+            <a href="#/news" data-route>Новости</a>
+            <a href="#/contacts" data-route>Контакты</a>
+        </nav>
+    </div>
+
+    <div class="gv-center">
+        <input id="search" class="gv-search" placeholder="Поиск игр, жанров, платформ..." />
+    </div>
+
+    <div class="gv-right">
+        <button id="btn-view-toggle" class="icon-btn" title="Переключить вид">▦</button>
+        <select id="sort" class="gv-select" aria-label="Сортировка">
+            <option value="relevance">По релевантности</option>
+            <option value="new">Сначала новые</option>
+            <option value="popular">По популярности</option>
+            <option value="alpha">По алфавиту</option>
+        </select>
+        <button id="btn-login" class="gv-btn">Войти (Discord)</button>
+        <a href="#/favorites" data-route class="fav-link">Избранное <span id="fav-count" class="fav-count">0</span></a>
     </div>
 </header>
 
-<main id="app" class="container">
-    <!-- Views рендерятся JS -->
+<main id="app" class="gv-main container">
+    <!-- Sidebar + content layout -->
+    <aside class="gv-sidebar">
+        <section class="panel">
+            <h4>Фильтры</h4>
+            <div class="filter-group">
+                <label>Платформа</label>
+                <div class="chips" id="platform-filters"></div>
+            </div>
+            <div class="filter-group">
+                <label>Жанр</label>
+                <div class="chips" id="genre-filters"></div>
+            </div>
+            <div class="filter-group">
+                <label>Цена</label>
+                <div class="price-range">
+                    <select id="price-filter" class="gv-select">
+                        <option value="any">Любая</option>
+                        <option value="free">Бесплатно</option>
+                        <option value="paid">Платные</option>
+                        <option value="discount">Со скидкой</option>
+                    </select>
+                </div>
+            </div>
+            <div class="filter-group">
+                <button id="clear-filters" class="gv-btn ghost">Сбросить фильтры</button>
+            </div>
+        </section>
+        <section class="panel small-info">
+            <h4>Совет</h4>
+            <p>Кликните по обложке или кнопку «Подробнее», чтобы открыть карточку игры. Наведите, чтобы посмотреть быструю информацию.</p>
+        </section>
+    </aside>
+
+    <section class="gv-content">
+        <div class="gv-hero">
+            <div class="hero-left">
+                <h1>Найди свою следующую игру</h1>
+                <p class="muted">Быстрый доступ к описаниям, системным требованиям и магазинам.</p>
+            </div>
+            <div class="hero-right">
+                <button id="random-game" class="gv-btn">Случайная игра</button>
+            </div>
+        </div>
+
+        <div class="results-bar">
+            <div id="results-count" class="muted">Найдено: 0</div>
+        </div>
+
+        <div id="grid" class="gv-grid" aria-live="polite"></div>
+
+        <div class="pagination" id="pagination" aria-hidden="true"></div>
+    </section>
 </main>
 
-<!-- Модальное окно с описанием игры -->
+<!-- модальное окно / подробная карточка -->
 <div id="modal" class="modal" aria-hidden="true">
-    <div class="modal-content neon">
+    <div class="modal-content">
         <button class="modal-close" id="modal-close">&times;</button>
         <div id="modal-body"></div>
     </div>
 </div>
 
 <template id="card-template">
-    <article class="card neon">
-        <img class="card-cover" alt="">
-        <div class="card-body">
-            <h3 class="card-title"></h3>
-            <p class="card-meta"></p>
-            <div class="card-actions">
-                <button class="btn btn-primary btn-details">Описание</button>
-                <button class="btn btn-fav">❤</button>
+    <article class="game-card">
+        <div class="cover-wrap">
+            <img class="cover lazy" alt="" loading="lazy">
+            <div class="card-hover">
+                <button class="btn-details gv-btn small">Подробнее</button>
+                <button class="btn-fav icon-btn" title="В избранное">♡</button>
+            </div>
+        </div>
+        <div class="card-info">
+            <h3 class="title"></h3>
+            <div class="meta">
+                <span class="platforms muted"></span>
+                <span class="dot">•</span>
+                <span class="release muted"></span>
+            </div>
+            <div class="tags"></div>
+            <div class="price-row">
+                <span class="price"></span>
+                <span class="discount muted"></span>
             </div>
         </div>
     </article>
