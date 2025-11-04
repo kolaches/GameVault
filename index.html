@@ -1,60 +1,50 @@
-<!doctype html>
-<html lang="ru">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GameVault — Home</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
-<div class="app">
-    <header class="site-header">
-        <div class="logo"><a href="index.html">GameVault</a></div>
-        <nav class="nav">
-            <a href="catalog.html">Catalog</a>
-            <a href="news.html">News</a>
-            <a href="about.html">About</a>
-            <a href="contacts.html">Contacts</a>
-        </nav>
-        <div class="header-right">
-            <input id="searchTop" class="search" placeholder="Search games..." />
-            <a href="login.html" class="btn small">Sign in</a>
+
+<!-- HEADER -->
+<header class="site-header">
+    <div class="logo"><a href="index.html">GameVault</a></div>
+
+    <nav class="nav">
+        <a href="index.html" class="active">Home</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="news.html">News</a>
+        <a href="contacts.html">Contacts</a>
+        <a href="about.html">About</a>
+    </nav>
+
+    <div class="header-right">
+        <button class="theme-toggle" id="themeToggle">
+            <div class="circle"></div>
+        </button>
+    </div>
+</header>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+    <section class="hero">
+        <div class="hero-left">
+            <h1>Discover Your Next Favorite Game</h1>
+            <p class="subtitle">Explore ratings, reviews, system requirements, trailers and more — all in one place.</p>
         </div>
-    </header>
+        <img src="assets/img/featured.jpg" class="hero-cover" alt="Featured Game">
+    </section>
 
-    <main class="container">
-        <section class="hero">
-            <div class="hero-left">
-                <h1>GameVault</h1>
-                <p class="subtitle">Discover, collect and connect — the vault of legendary games.</p>
-                <div class="hero-actions">
-                    <a class="btn" href="catalog.html">Browse Catalog</a>
-                    <a class="btn ghost" href="news.html">Latest News</a>
-                </div>
-            </div>
-            <div class="hero-right">
-                <img src="assets/img/featured.jpg" alt="Featured" class="hero-cover" />
-            </div>
-        </section>
-
-        <section class="featured">
-            <h2>Featured</h2>
-            <div id="featuredCards" class="cards"></div>
-        </section>
-
-        <section class="top">
-            <h2>Top rated</h2>
-            <div id="topCards" class="cards"></div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div>© <span id="year"></span> GameVault — Built with ♥ — <a href="https://discord.gg" target="_blank">Discord</a></div>
-    </footer>
+    <h2>🔥 Popular Games</h2>
+    <div class="cards" id="popularGames"></div>
 </div>
 
-<script src="js/games.js"></script>
-<script src="js/main.js"></script>
+<footer class="site-footer">
+    <p>© 2025 GameVault. All rights reserved.</p>
+</footer>
+
+<script src="assets/js/main.js"></script>
 </body>
 </html>

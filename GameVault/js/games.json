@@ -1,0 +1,1904 @@
+[
+  {
+    "id": 1,
+    "title": "Cyberpunk 2077",
+    "genre": "RPG",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.3,
+    "shortDescription": "Cyberpunk 2077 — популярная игра жанра RPG.",
+    "image": "https://picsum.photos/seed/game1/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Grand Theft Auto V",
+    "genre": "Racing",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.6,
+    "shortDescription": "Grand Theft Auto V — популярная игра жанра Racing.",
+    "image": "https://picsum.photos/seed/game2/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Fortnite",
+    "genre": "Horror",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.0,
+    "shortDescription": "Fortnite — популярная игра жанра Horror.",
+    "image": "https://picsum.photos/seed/game3/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 4,
+    "title": "Elden Ring",
+    "genre": "Indie",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.3,
+    "shortDescription": "Elden Ring — популярная игра жанра Indie.",
+    "image": "https://picsum.photos/seed/game4/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 5,
+    "title": "The Witcher 3",
+    "genre": "Strategy",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.6,
+    "shortDescription": "The Witcher 3 — популярная игра жанра Strategy.",
+    "image": "https://picsum.photos/seed/game5/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 6,
+    "title": "Forza Horizon 5",
+    "genre": "Survival",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.0,
+    "shortDescription": "Forza Horizon 5 — популярная игра жанра Survival.",
+    "image": "https://picsum.photos/seed/game6/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 7,
+    "title": "Outlast",
+    "genre": "Sports",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.3,
+    "shortDescription": "Outlast — популярная игра жанра Sports.",
+    "image": "https://picsum.photos/seed/game7/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 8,
+    "title": "Hades",
+    "genre": "Adventure",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.6,
+    "shortDescription": "Hades — популярная игра жанра Adventure.",
+    "image": "https://picsum.photos/seed/game8/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 9,
+    "title": "Minecraft",
+    "genre": "Shooter",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.0,
+    "shortDescription": "Minecraft — популярная игра жанра Shooter.",
+    "image": "https://picsum.photos/seed/game9/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 10,
+    "title": "FIFA 24",
+    "genre": "Action",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.3,
+    "shortDescription": "FIFA 24 — популярная игра жанра Action.",
+    "image": "https://picsum.photos/seed/game10/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 11,
+    "title": "Apex Legends",
+    "genre": "RPG",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.6,
+    "shortDescription": "Apex Legends — популярная игра жанра RPG.",
+    "image": "https://picsum.photos/seed/game11/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 12,
+    "title": "Call of Duty: Modern Warfare II",
+    "genre": "Racing",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.0,
+    "shortDescription": "Call of Duty: Modern Warfare II — популярная игра жанра Racing.",
+    "image": "https://picsum.photos/seed/game12/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 13,
+    "title": "Assassin's Creed Valhalla",
+    "genre": "Horror",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.3,
+    "shortDescription": "Assassin's Creed Valhalla — популярная игра жанра Horror.",
+    "image": "https://picsum.photos/seed/game13/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 14,
+    "title": "Resident Evil Village",
+    "genre": "Indie",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.6,
+    "shortDescription": "Resident Evil Village — популярная игра жанра Indie.",
+    "image": "https://picsum.photos/seed/game14/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 15,
+    "title": "Red Dead Redemption 2",
+    "genre": "Strategy",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.0,
+    "shortDescription": "Red Dead Redemption 2 — популярная игра жанра Strategy.",
+    "image": "https://picsum.photos/seed/game15/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 16,
+    "title": "God of War",
+    "genre": "Survival",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.3,
+    "shortDescription": "God of War — популярная игра жанра Survival.",
+    "image": "https://picsum.photos/seed/game16/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 17,
+    "title": "The Last of Us",
+    "genre": "Sports",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.6,
+    "shortDescription": "The Last of Us — популярная игра жанра Sports.",
+    "image": "https://picsum.photos/seed/game17/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 18,
+    "title": "Dota 2",
+    "genre": "Adventure",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.0,
+    "shortDescription": "Dota 2 — популярная игра жанра Adventure.",
+    "image": "https://picsum.photos/seed/game18/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 19,
+    "title": "League of Legends",
+    "genre": "Shooter",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.3,
+    "shortDescription": "League of Legends — популярная игра жанра Shooter.",
+    "image": "https://picsum.photos/seed/game19/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 20,
+    "title": "Valorant",
+    "genre": "Action",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.6,
+    "shortDescription": "Valorant — популярная игра жанра Action.",
+    "image": "https://picsum.photos/seed/game20/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 21,
+    "title": "CS: GO",
+    "genre": "RPG",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.0,
+    "shortDescription": "CS: GO — популярная игра жанра RPG.",
+    "image": "https://picsum.photos/seed/game21/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 22,
+    "title": "Need for Speed Heat",
+    "genre": "Racing",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.3,
+    "shortDescription": "Need for Speed Heat — популярная игра жанра Racing.",
+    "image": "https://picsum.photos/seed/game22/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 23,
+    "title": "Battlefield 2042",
+    "genre": "Horror",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.6,
+    "shortDescription": "Battlefield 2042 — популярная игра жанра Horror.",
+    "image": "https://picsum.photos/seed/game23/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 24,
+    "title": "Rainbow Six Siege",
+    "genre": "Indie",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.0,
+    "shortDescription": "Rainbow Six Siege — популярная игра жанра Indie.",
+    "image": "https://picsum.photos/seed/game24/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 25,
+    "title": "Hogwarts Legacy",
+    "genre": "Strategy",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.3,
+    "shortDescription": "Hogwarts Legacy — популярная игра жанра Strategy.",
+    "image": "https://picsum.photos/seed/game25/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 26,
+    "title": "Far Cry 6",
+    "genre": "Survival",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.6,
+    "shortDescription": "Far Cry 6 — популярная игра жанра Survival.",
+    "image": "https://picsum.photos/seed/game26/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 27,
+    "title": "Cyber Shadow",
+    "genre": "Sports",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.0,
+    "shortDescription": "Cyber Shadow — популярная игра жанра Sports.",
+    "image": "https://picsum.photos/seed/game27/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 28,
+    "title": "Dead Cells",
+    "genre": "Adventure",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.3,
+    "shortDescription": "Dead Cells — популярная игра жанра Adventure.",
+    "image": "https://picsum.photos/seed/game28/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 29,
+    "title": "Dark Souls III",
+    "genre": "Shooter",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.6,
+    "shortDescription": "Dark Souls III — популярная игра жанра Shooter.",
+    "image": "https://picsum.photos/seed/game29/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 30,
+    "title": "Terraria",
+    "genre": "Action",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.0,
+    "shortDescription": "Terraria — популярная игра жанра Action.",
+    "image": "https://picsum.photos/seed/game30/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 31,
+    "title": "Subnautica",
+    "genre": "RPG",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.3,
+    "shortDescription": "Subnautica — популярная игра жанра RPG.",
+    "image": "https://picsum.photos/seed/game31/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 32,
+    "title": "Rust",
+    "genre": "Racing",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.6,
+    "shortDescription": "Rust — популярная игра жанра Racing.",
+    "image": "https://picsum.photos/seed/game32/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 33,
+    "title": "Ark: Survival Evolved",
+    "genre": "Horror",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.0,
+    "shortDescription": "Ark: Survival Evolved — популярная игра жанра Horror.",
+    "image": "https://picsum.photos/seed/game33/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 34,
+    "title": "PUBG",
+    "genre": "Indie",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.3,
+    "shortDescription": "PUBG — популярная игра жанра Indie.",
+    "image": "https://picsum.photos/seed/game34/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 35,
+    "title": "Overwatch 2",
+    "genre": "Strategy",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.6,
+    "shortDescription": "Overwatch 2 — популярная игра жанра Strategy.",
+    "image": "https://picsum.photos/seed/game35/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 36,
+    "title": "Genshin Impact",
+    "genre": "Survival",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.0,
+    "shortDescription": "Genshin Impact — популярная игра жанра Survival.",
+    "image": "https://picsum.photos/seed/game36/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 37,
+    "title": "Rocket League",
+    "genre": "Sports",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.3,
+    "shortDescription": "Rocket League — популярная игра жанра Sports.",
+    "image": "https://picsum.photos/seed/game37/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 38,
+    "title": "NBA 2K24",
+    "genre": "Adventure",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.6,
+    "shortDescription": "NBA 2K24 — популярная игра жанра Adventure.",
+    "image": "https://picsum.photos/seed/game38/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 39,
+    "title": "Mortal Kombat 1",
+    "genre": "Shooter",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.0,
+    "shortDescription": "Mortal Kombat 1 — популярная игра жанра Shooter.",
+    "image": "https://picsum.photos/seed/game39/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 40,
+    "title": "The Forest",
+    "genre": "Action",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.3,
+    "shortDescription": "The Forest — популярная игра жанра Action.",
+    "image": "https://picsum.photos/seed/game40/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 41,
+    "title": "DayZ",
+    "genre": "RPG",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.6,
+    "shortDescription": "DayZ — популярная игра жанра RPG.",
+    "image": "https://picsum.photos/seed/game41/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 42,
+    "title": "Among Us",
+    "genre": "Racing",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.0,
+    "shortDescription": "Among Us — популярная игра жанра Racing.",
+    "image": "https://picsum.photos/seed/game42/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 43,
+    "title": "Stardew Valley",
+    "genre": "Horror",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.3,
+    "shortDescription": "Stardew Valley — популярная игра жанра Horror.",
+    "image": "https://picsum.photos/seed/game43/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 44,
+    "title": "Baldur's Gate 3",
+    "genre": "Indie",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.6,
+    "shortDescription": "Baldur's Gate 3 — популярная игра жанра Indie.",
+    "image": "https://picsum.photos/seed/game44/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 45,
+    "title": "Sekiro: Shadows Die Twice",
+    "genre": "Strategy",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.0,
+    "shortDescription": "Sekiro: Shadows Die Twice — популярная игра жанра Strategy.",
+    "image": "https://picsum.photos/seed/game45/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 46,
+    "title": "Metro Exodus",
+    "genre": "Survival",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.3,
+    "shortDescription": "Metro Exodus — популярная игра жанра Survival.",
+    "image": "https://picsum.photos/seed/game46/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 47,
+    "title": "Control",
+    "genre": "Sports",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.6,
+    "shortDescription": "Control — популярная игра жанра Sports.",
+    "image": "https://picsum.photos/seed/game47/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 48,
+    "title": "Shadow of the Tomb Raider",
+    "genre": "Adventure",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.0,
+    "shortDescription": "Shadow of the Tomb Raider — популярная игра жанра Adventure.",
+    "image": "https://picsum.photos/seed/game48/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 49,
+    "title": "Hitman 3",
+    "genre": "Shooter",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.3,
+    "shortDescription": "Hitman 3 — популярная игра жанра Shooter.",
+    "image": "https://picsum.photos/seed/game49/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 50,
+    "title": "Halo Infinite",
+    "genre": "Action",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.6,
+    "shortDescription": "Halo Infinite — популярная игра жанра Action.",
+    "image": "https://picsum.photos/seed/game50/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  }
+]
+[
+  {
+    "id": 1,
+    "title": "Cyberpunk 2077",
+    "genre": "RPG",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.3,
+    "shortDescription": "Cyberpunk 2077 — популярная игра жанра RPG.",
+    "image": "https://picsum.photos/seed/game1/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 2,
+    "title": "Grand Theft Auto V",
+    "genre": "Racing",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.6,
+    "shortDescription": "Grand Theft Auto V — популярная игра жанра Racing.",
+    "image": "https://picsum.photos/seed/game2/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 3,
+    "title": "Fortnite",
+    "genre": "Horror",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.0,
+    "shortDescription": "Fortnite — популярная игра жанра Horror.",
+    "image": "https://picsum.photos/seed/game3/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 4,
+    "title": "Elden Ring",
+    "genre": "Indie",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.3,
+    "shortDescription": "Elden Ring — популярная игра жанра Indie.",
+    "image": "https://picsum.photos/seed/game4/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 5,
+    "title": "The Witcher 3",
+    "genre": "Strategy",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.6,
+    "shortDescription": "The Witcher 3 — популярная игра жанра Strategy.",
+    "image": "https://picsum.photos/seed/game5/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 6,
+    "title": "Forza Horizon 5",
+    "genre": "Survival",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.0,
+    "shortDescription": "Forza Horizon 5 — популярная игра жанра Survival.",
+    "image": "https://picsum.photos/seed/game6/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 7,
+    "title": "Outlast",
+    "genre": "Sports",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.3,
+    "shortDescription": "Outlast — популярная игра жанра Sports.",
+    "image": "https://picsum.photos/seed/game7/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 8,
+    "title": "Hades",
+    "genre": "Adventure",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.6,
+    "shortDescription": "Hades — популярная игра жанра Adventure.",
+    "image": "https://picsum.photos/seed/game8/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 9,
+    "title": "Minecraft",
+    "genre": "Shooter",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.0,
+    "shortDescription": "Minecraft — популярная игра жанра Shooter.",
+    "image": "https://picsum.photos/seed/game9/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 10,
+    "title": "FIFA 24",
+    "genre": "Action",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.3,
+    "shortDescription": "FIFA 24 — популярная игра жанра Action.",
+    "image": "https://picsum.photos/seed/game10/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 11,
+    "title": "Apex Legends",
+    "genre": "RPG",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.6,
+    "shortDescription": "Apex Legends — популярная игра жанра RPG.",
+    "image": "https://picsum.photos/seed/game11/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 12,
+    "title": "Call of Duty: Modern Warfare II",
+    "genre": "Racing",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.0,
+    "shortDescription": "Call of Duty: Modern Warfare II — популярная игра жанра Racing.",
+    "image": "https://picsum.photos/seed/game12/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 13,
+    "title": "Assassin's Creed Valhalla",
+    "genre": "Horror",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.3,
+    "shortDescription": "Assassin's Creed Valhalla — популярная игра жанра Horror.",
+    "image": "https://picsum.photos/seed/game13/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 14,
+    "title": "Resident Evil Village",
+    "genre": "Indie",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.6,
+    "shortDescription": "Resident Evil Village — популярная игра жанра Indie.",
+    "image": "https://picsum.photos/seed/game14/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 15,
+    "title": "Red Dead Redemption 2",
+    "genre": "Strategy",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.0,
+    "shortDescription": "Red Dead Redemption 2 — популярная игра жанра Strategy.",
+    "image": "https://picsum.photos/seed/game15/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 16,
+    "title": "God of War",
+    "genre": "Survival",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.3,
+    "shortDescription": "God of War — популярная игра жанра Survival.",
+    "image": "https://picsum.photos/seed/game16/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 17,
+    "title": "The Last of Us",
+    "genre": "Sports",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.6,
+    "shortDescription": "The Last of Us — популярная игра жанра Sports.",
+    "image": "https://picsum.photos/seed/game17/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 18,
+    "title": "Dota 2",
+    "genre": "Adventure",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.0,
+    "shortDescription": "Dota 2 — популярная игра жанра Adventure.",
+    "image": "https://picsum.photos/seed/game18/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 19,
+    "title": "League of Legends",
+    "genre": "Shooter",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.3,
+    "shortDescription": "League of Legends — популярная игра жанра Shooter.",
+    "image": "https://picsum.photos/seed/game19/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 20,
+    "title": "Valorant",
+    "genre": "Action",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.6,
+    "shortDescription": "Valorant — популярная игра жанра Action.",
+    "image": "https://picsum.photos/seed/game20/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 21,
+    "title": "CS: GO",
+    "genre": "RPG",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.0,
+    "shortDescription": "CS: GO — популярная игра жанра RPG.",
+    "image": "https://picsum.photos/seed/game21/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 22,
+    "title": "Need for Speed Heat",
+    "genre": "Racing",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.3,
+    "shortDescription": "Need for Speed Heat — популярная игра жанра Racing.",
+    "image": "https://picsum.photos/seed/game22/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 23,
+    "title": "Battlefield 2042",
+    "genre": "Horror",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.6,
+    "shortDescription": "Battlefield 2042 — популярная игра жанра Horror.",
+    "image": "https://picsum.photos/seed/game23/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 24,
+    "title": "Rainbow Six Siege",
+    "genre": "Indie",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.0,
+    "shortDescription": "Rainbow Six Siege — популярная игра жанра Indie.",
+    "image": "https://picsum.photos/seed/game24/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 25,
+    "title": "Hogwarts Legacy",
+    "genre": "Strategy",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.3,
+    "shortDescription": "Hogwarts Legacy — популярная игра жанра Strategy.",
+    "image": "https://picsum.photos/seed/game25/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 26,
+    "title": "Far Cry 6",
+    "genre": "Survival",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.6,
+    "shortDescription": "Far Cry 6 — популярная игра жанра Survival.",
+    "image": "https://picsum.photos/seed/game26/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 27,
+    "title": "Cyber Shadow",
+    "genre": "Sports",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.0,
+    "shortDescription": "Cyber Shadow — популярная игра жанра Sports.",
+    "image": "https://picsum.photos/seed/game27/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 28,
+    "title": "Dead Cells",
+    "genre": "Adventure",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.3,
+    "shortDescription": "Dead Cells — популярная игра жанра Adventure.",
+    "image": "https://picsum.photos/seed/game28/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 29,
+    "title": "Dark Souls III",
+    "genre": "Shooter",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.6,
+    "shortDescription": "Dark Souls III — популярная игра жанра Shooter.",
+    "image": "https://picsum.photos/seed/game29/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 30,
+    "title": "Terraria",
+    "genre": "Action",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.0,
+    "shortDescription": "Terraria — популярная игра жанра Action.",
+    "image": "https://picsum.photos/seed/game30/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 31,
+    "title": "Subnautica",
+    "genre": "RPG",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.3,
+    "shortDescription": "Subnautica — популярная игра жанра RPG.",
+    "image": "https://picsum.photos/seed/game31/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 32,
+    "title": "Rust",
+    "genre": "Racing",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.6,
+    "shortDescription": "Rust — популярная игра жанра Racing.",
+    "image": "https://picsum.photos/seed/game32/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 33,
+    "title": "Ark: Survival Evolved",
+    "genre": "Horror",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.0,
+    "shortDescription": "Ark: Survival Evolved — популярная игра жанра Horror.",
+    "image": "https://picsum.photos/seed/game33/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 34,
+    "title": "PUBG",
+    "genre": "Indie",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.3,
+    "shortDescription": "PUBG — популярная игра жанра Indie.",
+    "image": "https://picsum.photos/seed/game34/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 35,
+    "title": "Overwatch 2",
+    "genre": "Strategy",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.6,
+    "shortDescription": "Overwatch 2 — популярная игра жанра Strategy.",
+    "image": "https://picsum.photos/seed/game35/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 36,
+    "title": "Genshin Impact",
+    "genre": "Survival",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.0,
+    "shortDescription": "Genshin Impact — популярная игра жанра Survival.",
+    "image": "https://picsum.photos/seed/game36/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 37,
+    "title": "Rocket League",
+    "genre": "Sports",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.3,
+    "shortDescription": "Rocket League — популярная игра жанра Sports.",
+    "image": "https://picsum.photos/seed/game37/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 38,
+    "title": "NBA 2K24",
+    "genre": "Adventure",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.6,
+    "shortDescription": "NBA 2K24 — популярная игра жанра Adventure.",
+    "image": "https://picsum.photos/seed/game38/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 39,
+    "title": "Mortal Kombat 1",
+    "genre": "Shooter",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.0,
+    "shortDescription": "Mortal Kombat 1 — популярная игра жанра Shooter.",
+    "image": "https://picsum.photos/seed/game39/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 40,
+    "title": "The Forest",
+    "genre": "Action",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.3,
+    "shortDescription": "The Forest — популярная игра жанра Action.",
+    "image": "https://picsum.photos/seed/game40/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 41,
+    "title": "DayZ",
+    "genre": "RPG",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.6,
+    "shortDescription": "DayZ — популярная игра жанра RPG.",
+    "image": "https://picsum.photos/seed/game41/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 42,
+    "title": "Among Us",
+    "genre": "Racing",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.0,
+    "shortDescription": "Among Us — популярная игра жанра Racing.",
+    "image": "https://picsum.photos/seed/game42/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 43,
+    "title": "Stardew Valley",
+    "genre": "Horror",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.3,
+    "shortDescription": "Stardew Valley — популярная игра жанра Horror.",
+    "image": "https://picsum.photos/seed/game43/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 44,
+    "title": "Baldur's Gate 3",
+    "genre": "Indie",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.6,
+    "shortDescription": "Baldur's Gate 3 — популярная игра жанра Indie.",
+    "image": "https://picsum.photos/seed/game44/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 45,
+    "title": "Sekiro: Shadows Die Twice",
+    "genre": "Strategy",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.0,
+    "shortDescription": "Sekiro: Shadows Die Twice — популярная игра жанра Strategy.",
+    "image": "https://picsum.photos/seed/game45/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 46,
+    "title": "Metro Exodus",
+    "genre": "Survival",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 7.3,
+    "shortDescription": "Metro Exodus — популярная игра жанра Survival.",
+    "image": "https://picsum.photos/seed/game46/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 47,
+    "title": "Control",
+    "genre": "Sports",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 8.6,
+    "shortDescription": "Control — популярная игра жанра Sports.",
+    "image": "https://picsum.photos/seed/game47/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 48,
+    "title": "Shadow of the Tomb Raider",
+    "genre": "Adventure",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 9.0,
+    "shortDescription": "Shadow of the Tomb Raider — популярная игра жанра Adventure.",
+    "image": "https://picsum.photos/seed/game48/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 49,
+    "title": "Hitman 3",
+    "genre": "Shooter",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 10.3,
+    "shortDescription": "Hitman 3 — популярная игра жанра Shooter.",
+    "image": "https://picsum.photos/seed/game49/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  },
+  {
+    "id": 50,
+    "title": "Halo Infinite",
+    "genre": "Action",
+    "platforms": [
+      "PC"
+    ],
+    "rating": 6.6,
+    "shortDescription": "Halo Infinite — популярная игра жанра Action.",
+    "image": "https://picsum.photos/seed/game50/600/400",
+    "requirements": {
+      "min": "CPU: i5 • RAM: 8GB • GPU: GTX 960",
+      "rec": "CPU: i7 • RAM: 16GB • GPU: GTX 1660"
+    },
+    "stores": {
+      "steam": "#",
+      "epic": "#"
+    }
+  }
+]
