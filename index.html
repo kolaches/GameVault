@@ -3,125 +3,82 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>GameVault — Магазин игр (Steam‑like)</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>GameVault — Игровой каталог</title>
+    <meta name="description" content="GameVault — современный игровой хаб: каталог, избранное, страницы игр и ссылки на магазины." />
+
+    <!-- Google font (Inter) — можно оставить или убрать -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <!-- Основной стиль (замени файл на предложенный styles.css) -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <!-- Favicon (опционально) -->
+    <link rel="icon" href="assets/img/favicon.png" type="image/png" />
 </head>
 <body>
-<header class="gv-topbar">
-    <div class="gv-left">
-        <div class="gv-logo">GameVault</div>
-        <nav class="gv-nav">
-            <a href="#/catalog" data-route class="active">Каталог</a>
-            <a href="#/news" data-route>Новости</a>
-            <a href="#/servers" data-route>Серверы</a>
-            <a href="#/about" data-route>О проекте</a>
-        </nav>
+<!-- Header -->
+<header class="gv-header" role="banner">
+    <div style="display:flex;align-items:center;gap:12px">
+        <button id="mobile-menu-toggle" aria-label="Открыть меню" style="display:none">☰</button>
+        <a href="#/" class="logo" aria-label="Перейти на главную">GameVault</a>
     </div>
 
-    <div class="gv-center">
-        <input id="search" class="gv-search" placeholder="Поиск игр, жанров, платформ, описаний..." />
-    </div>
+    <nav class="gv-nav" role="navigation" aria-label="Основная навигация">
+        <a href="#/" class="nav-link">Главная</a>
+        <a href="#/catalog" class="nav-link">Каталог</a>
+        <a href="#/favorites" class="nav-link">Избранное</a>
+        <a href="#/news" class="nav-link">Новости</a>
+        <a href="#/profile" class="nav-link">Профиль</a>
+    </nav>
 
-    <div class="gv-right">
-        <button id="btn-view-toggle" class="icon-btn" title="Переключить вид">▦</button>
-        <select id="sort" class="gv-select" aria-label="Сортировка">
-            <option value="relevance">По релевантности</option>
-            <option value="new">Сначала новые</option>
-            <option value="popular">По популярности</option>
-            <option value="alpha">По алфавиту</option>
-        </select>
-        <button id="btn-login" class="gv-btn" title="Войти">Войти</button>
-        <a href="#/favorites" data-route class="fav-link">Избранное <span id="fav-count" class="fav-count">0</span></a>
+    <div class="header-actions" role="search" aria-label="Поиск по играм">
+        <input id="gv-search" placeholder="Поиск игр..." aria-label="Поиск игр" />
     </div>
 </header>
 
-<main id="app" class="container">
-    <aside class="gv-sidebar">
-        <section class="panel">
-            <h4>Фильтры</h4>
-            <div class="filter-group">
-                <label>Платформа</label>
-                <div class="chips" id="platform-filters"></div>
-            </div>
-            <div class="filter-group">
-                <label>Жанр</label>
-                <div class="chips" id="genre-filters"></div>
-            </div>
-            <div class="filter-group">
-                <label>Цена</label>
-                <div class="chips">
-                    <button class="chip" data-price="any">Любая</button>
-                    <button class="chip" data-price="free">Бесплатно</button>
-                    <button class="chip" data-price="paid">Платные</button>
-                    <button class="chip" data-price="discount">Со скидкой</button>
-                </div>
-            </div>
-            <div class="filter-group">
-                <button id="clear-filters" class="gv-btn ghost">Сбросить фильтры</button>
-            </div>
-        </section>
-
-        <section class="panel small-info">
-            <h4>Совет</h4>
-            <p>Кликните на обложку или «Подробнее», чтобы открыть окно товара. Наведите курсор для быстрого предпросмотра. Вход через Steam/Discord доступен через сервер.</p>
-        </section>
-    </aside>
-
-    <section class="gv-content">
-        <div class="gv-hero">
-            <div class="hero-left">
-                <h1>Каталог — Найди свою следующую игру</h1>
-                <p class="muted">Реальные игры, требования, ссылки в магазины и быстрые переходы.</p>
-            </div>
-            <div class="hero-right">
-                <button id="random-game" class="gv-btn">Случайная игра</button>
-            </div>
-        </div>
-
-        <div class="results-bar">
-            <div id="results-count" class="muted">Найдено: 0</div>
-            <div class="view-controls muted">Вид: <span id="view-mode">Сетка</span></div>
-        </div>
-
-        <div id="grid" class="gv-grid" aria-live="polite"></div>
-
-        <div class="pagination" id="pagination" aria-hidden="true"></div>
-    </section>
+<!-- Основной контейнер приложения: сюда рендерит app.js -->
+<main id="app" class="gv-app" role="main" aria-live="polite">
+    <!-- Контент подгрузится динамически через js/app.js -->
+    <div class="page-title">
+        <h2>Загрузка…</h2>
+        <div class="small-muted">Подождите, загружаем данные</div>
+    </div>
 </main>
 
-<!-- модальное окно -->
-<div id="modal" class="modal" aria-hidden="true">
-    <div class="modal-content">
-        <button class="modal-close" id="modal-close">&times;</button>
-        <div id="modal-body"></div>
+<!-- Footer -->
+<footer style="padding:20px 36px; color:var(--muted); border-top:1px solid rgba(255,255,255,0.02);">
+    <div style="max-width:1200px; margin:0 auto; display:flex; justify-content:space-between; gap:12px; align-items:center; flex-wrap:wrap;">
+        <div>© <strong>GameVault</strong> — Все права не защищены 😉</div>
+        <div class="small-muted">Версия: 1.0 · Стиль: тёмный неон</div>
     </div>
-</div>
+</footer>
 
-<template id="card-template">
-    <article class="game-card">
-        <div class="cover-wrap">
-            <img class="cover lazy" alt="" loading="lazy">
-            <div class="card-hover">
-                <button class="btn-details gv-btn small">Подробнее</button>
-                <button class="btn-fav icon-btn" title="В избранное">♡</button>
-            </div>
-        </div>
-        <div class="card-info">
-            <h3 class="title"></h3>
-            <div class="meta">
-                <span class="platforms muted"></span>
-                <span class="dot">•</span>
-                <span class="release muted"></span>
-            </div>
-            <div class="tags"></div>
-            <div class="price-row">
-                <span class="price"></span>
-                <span class="discount muted"></span>
-            </div>
-        </div>
-    </article>
-</template>
+<!-- Если JS отключен -->
+<noscript>
+    <div style="padding:16px; background:#111; color:#f1f1f1; text-align:center;">
+        Для корректной работы сайта требуется включённый JavaScript.
+    </div>
+</noscript>
 
-<script src="app.js" defer></script>
+<!-- Подключаем клиентский SPA-скрипт (замени/проверь путь) -->
+<script src="js/app.js" defer></script>
+
+<!-- Небольшой enhancement: быстрая навигация по Enter в search -->
+<script>
+    (function(){
+      const search = document.getElementById('gv-search');
+      if (!search) return;
+      search.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          const q = (search.value || '').trim();
+          // переходим в каталог и передаём параметр как часть хеша
+          // (app.js можно расширить, чтобы читать query)
+          location.hash = '#/catalog';
+          // можно запомнить запрос в sessionStorage — app.js может его поднять и применить
+          sessionStorage.setItem('gv_search_query', q);
+        }
+      });
+    })();
+</script>
 </body>
 </html>
