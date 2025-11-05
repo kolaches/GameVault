@@ -1,50 +1,53 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GameVault — Главная</title>
-    <link rel="stylesheet" href="css/styles.css" />
-
-    <!-- Шрифты -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet" />
-
-    <script defer src="js/app.js"></script>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>GameVault — Игровой хаб от Kolaches</title>
+    <meta name="description" content="GameVault — магазин и каталог игр. Автор: Kolaches." />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="GameVault/css/styles.css">
+    <link rel="icon" href="GameVault/assets/img/favicon.png" type="image/png" />
 </head>
 <body>
-<div class="background-overlay"></div>
+<header class="gv-header" role="banner">
+    <div class="gv-header-left">
+        <a class="logo" href="#/">GameVault</a>
+        <nav class="gv-nav" aria-label="Навигация">
+            <a href="#/" class="nav-link">МАГАЗИН</a>
+            <a href="#/catalog" class="nav-link">КАТАЛОГ</a>
+            <a href="#/favorites" class="nav-link">ИЗБРАННОЕ</a>
+            <a href="#/news" class="nav-link">НОВОСТИ</a>
+        </nav>
+    </div>
 
-<header class="gv-header">
-    <div class="logo">Vault</div>
-    <nav>
-        <a href="index.html" class="active">Главная</a>
-        <a href="pages/catalog.html">Каталог</a>
-        <a href="pages/news.html">Новости</a>
-    </nav>
+    <div class="gv-header-right">
+        <div class="search-wrap">
+            <input id="gv-search" placeholder="Поиск игр..." aria-label="Поиск игр" />
+        </div>
+        <div class="header-actions">
+            <button id="btn-discord" class="btn ghost">Discord</button>
+            <button id="btn-login" class="btn small ghost">Войти</button>
+        </div>
+    </div>
 </header>
 
-<main>
-    <section class="hero">
-        <h1>Открой мир игр</h1>
-        <p>Лучшие тайтлы, новинки, рекомендации и хиты — всё в одном месте.</p>
-    </section>
-
-    <section class="section">
-        <h2>🔥 Популярное сейчас</h2>
-        <div class="carousel" id="popular"></div>
-    </section>
-
-    <section class="section">
-        <h2>🆕 Новинки</h2>
-        <div class="carousel" id="new"></div>
-    </section>
-
-    <section class="section">
-        <h2>⭐ Мы рекомендуем</h2>
-        <div class="carousel" id="recommend"></div>
-    </section>
+<main id="app" class="gv-app" role="main" aria-live="polite">
+    <div class="page-title">
+        <h2>Загрузка…</h2>
+        <div class="small-muted">Подождите, загружаем каталог</div>
+    </div>
 </main>
 
-<footer class="gv-footer">© 2025 GameVault</footer>
+<footer class="gv-footer">
+    <div>© GameVault — от Kolaches · Demo UI · Version 2.0</div>
+    <div class="small-muted">Инспирировано Steam — создано Kolaches</div>
+</footer>
+
+<noscript>
+    <div class="noscript">Включите JavaScript для корректной работы приложения.</div>
+</noscript>
+
+<script src="GameVault/js/app.js" defer></script>
 </body>
 </html>
