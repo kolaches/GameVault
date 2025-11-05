@@ -21,7 +21,7 @@
     "rating": 9.2,
     "description": "Глубокая командная MOBA с миллионами матчей ежедневно.",
     "requirements": "Windows 7+, Dual-core, 8GB RAM",
-    "store": "https://store.steampowered.com/app/570/Dota_2/"
+    "store": "https://store.steampowered.com/app/570/Dota_2"
   },
   {
     "id": "gta5",
@@ -214,18 +214,6 @@
     "description": "Кооперативные охоты на призраков с атмосферой и страхом неведомого.",
     "requirements": "Windows 10+, Intel i5, 8GB RAM",
     "store": "https://store.steampowered.com/app/739630/Phasmophobia/"
-  },
-  {
-    "id": "bg3_alt",
-    "title": "Baldur's Gate 3",
-    "thumb": "GameVault/assets/img/bg3.jpg",
-    "genre": "RPG",
-    "platform": "PC",
-    "price": "~3599 руб.",
-    "rating": 9.6,
-    "description": "Полная версия Baldur's Gate 3 — все дополнения и контент.",
-    "requirements": "Windows 10+, Intel i5, 12GB RAM",
-    "store": "https://store.steampowered.com/app/687650/Baldurs_Gate_3/"
   },
   {
     "id": "witcher3_goty",

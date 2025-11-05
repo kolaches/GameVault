@@ -384,6 +384,32 @@
     .catch(()=>{
       document.getElementById('games-list').textContent='Ошибка загрузки списка игр';
     });
+  // Загружаем игры из JSON и распределяем по секциям
+  fetch("js/data/games.json")
+    .then((res) => res.json())
+    .then((games) => {
+      renderCarousel("popular", games.slice(0, 8));     // Популярные
+      renderCarousel("new", games.slice(8, 14));        // Новинки
+      renderCarousel("recommend", games.slice(14, 20)); // Рекомендуем
+    })
+    .catch(() => {
+      document.getElementById("popular").innerHTML = "Ошибка загрузки данных";
+    });
+
+  function renderCarousel(id, list) {
+    const carousel = document.getElementById(id);
+    carousel.innerHTML = "";
+
+    list.forEach((game) => {
+      const card = document.createElement("div");
+      card.className = "game-card";
+      card.innerHTML = `
+        <strong>${game.title}</strong><br>
+        <span style="color:#7ea2c9">${game.price}</span>
+      `;
+      carousel.appendChild(card);
+    });
+  }
 
 
 })();
